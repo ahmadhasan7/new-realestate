@@ -42,7 +42,7 @@ class Crud {
       print(response.statusCode);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        var responsebody = jsonDecode(response.body);
+        var responsebody = jsonDecode(utf8.decode(response.bodyBytes));
         print(responsebody);
 
         return Right(responsebody);
@@ -66,7 +66,7 @@ class Crud {
       print(response.statusCode);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        var responsebody = jsonDecode(response.body);
+        var responsebody = jsonDecode(utf8.decode(response.bodyBytes));
         print(responsebody);
 
         return Right(responsebody);

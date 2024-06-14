@@ -33,7 +33,7 @@ class AddPropertyDetails extends StatelessWidget {
       ),
       body: GetBuilder<AddPropertyController>(builder: (controller) {
         return Container(
-              decoration: BoxDecoration(
+              decoration:const  BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("Assets/images/12.jpg"),
                   // Set your background image here
@@ -225,7 +225,7 @@ class AddPropertyDetails extends StatelessWidget {
                   TextFormField(
                     controller: controller.description,
                     maxLines: 5,
-                    decoration: InputDecoration(
+                    decoration:const  InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'اترك وصف عقارك هنا',
                     ),

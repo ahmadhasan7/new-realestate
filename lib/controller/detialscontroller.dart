@@ -39,7 +39,7 @@ class DetailsController extends GetxController {
       update();
     }
   }
-  goToPropertyDetails(){
-    Get.toNamed(AppRoute.propertdetailsscreen);
+  goToPropertyDetails(String slug){
+    Get.toNamed(AppRoute.propertdetailsscreen,arguments:slug );
   }
 }

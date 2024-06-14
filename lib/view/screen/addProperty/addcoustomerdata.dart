@@ -31,7 +31,7 @@ class AddCoustomerData extends StatelessWidget {
           centerTitle: true,
         ),
         body: Container(
-          decoration: BoxDecoration(
+          decoration:const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("Assets/images/12.jpg"),
               fit: BoxFit.cover,
@@ -75,13 +75,13 @@ class AddCoustomerData extends StatelessWidget {
                       "  الأوقات المتاحة للاتصال  ",
                       style: TextStyle(fontFamily: "Tejwal", fontSize: 20.sp),
                     ),
-                    Icon(
+                   const  Icon(
                       Icons.access_time_filled,
                       color: AppColors.greencolor,
                     )
                   ],
                 ),
-                Text(
+                const Text(
                   "يمكنك إضافة الأوقات المناسبة لك بشكل اختياري   ",
                   style: TextStyle(color: Colors.grey, fontFamily: "Tejwal"),
                 ),

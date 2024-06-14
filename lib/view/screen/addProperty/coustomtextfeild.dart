@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:realestate/core/constanat/colors.dart';
 
 class CoustomTextFieldProperty extends StatelessWidget {

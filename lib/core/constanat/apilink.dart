@@ -3,5 +3,6 @@ class ApiLink{
   static const String url="https://housetech.onrender.com/api/v1/";
   static const String rigestar='${url}/register';
   static const String property='${url}properties/all';
+  static const String onproperty='${url}properties/';
   
 }

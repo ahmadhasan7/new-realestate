@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:realestate/core/class/handlingrequstveiw.dart';
 import 'package:realestate/core/constanat/colors.dart';
 import 'package:realestate/view/widget/propertydetails/coustomdatadetails.dart';
 import 'package:realestate/view/widget/propertydetails/coustomlabel.dart';
@@ -16,30 +17,37 @@ class PropertyDetailsScreen extends StatelessWidget {
         bottomNavigationBar: Container(
           width: double.infinity,
           height: 45.sp,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.phone,
-                color: AppColors.greencolor,
-              ),
-              SizedBox(
-                width: 10.sp,
-              ),
-              Text("التواصل مع المالك")
-            ],
+          child: GestureDetector(
+            onTap: (){controller.callwithphone(controller.data!.phoneNumber!);},
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+               const  Icon(
+                  Icons.phone,
+                  color: AppColors.greencolor,
+                ),
+                SizedBox(
+                  width: 10.sp,
+                ),
+                const Text("التواصل مع المالك")
+              ],
+            ),
           ),
         ),
         backgroundColor: Colors.grey.shade200,
         appBar: AppBar(
-          title: Text(
+          title:const  Text(
             "تفاصيل العقار",
             style: TextStyle(
                 fontFamily: "TejwalBold", fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
         ),
-        body: Padding(
+        body: GetBuilder<PropertyDetailsController>(
+        builder: (controller){
+      return HandlingDataView(
+        statusRequest: controller.statusRequest,
+        widget: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SingleChildScrollView(
             child: Column(
@@ -56,7 +64,7 @@ class PropertyDetailsScreen extends StatelessWidget {
                   children: [
                     ElevatedButton(
                         onPressed: () {},
-                        child: Row(
+                        child:const  Row(
                           children: [
                             Icon(
                               Icons.arrow_back_ios_new,
@@ -70,111 +78,171 @@ class PropertyDetailsScreen extends StatelessWidget {
                       width: 50.sp,
                       height: 20.sp,
                       child: Text(
-                        "مباع",
+                        controller.data!.propertyStatus=='For Rent' ?"للإجار":"للبيع",
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CoustomLabel(label: "450.000.000"),
-                    SizedBox(
+                    CoustomLabel(label: "${controller.data!.price}"),
+                    const SizedBox(
                       height: 15,
                     ),
-                    CoustomLabel(label: "وصف العقار"),
-                    Text(
-                      "أخر المليحة أول زيدين تبعد عن جامع عثمان 10كيلو متر على خط السرفيس ضمن مجمع مزارع . غرفتين وصالون لكل غرفة فيها تختين وفيها 4 فرشات اضافة بالاضافة لصالون كبير فيه طقم كنبايات ويوجد عدة مطابخ فيها وكاسات وصحون ووو.....",
+                    const CoustomLabel(label: "وصف العقار"),
+                    Text("${controller.data!.description}",
                       style: TextStyle(fontFamily: "Tejwal"),
                       textAlign: TextAlign.end,
                     ),
                     SizedBox(
                       height: 10.sp,
                     ),
-                    CoustomLabel(label: "خصائص العقار"),
-                    Divider(
+                   const  CoustomLabel(label: "خصائص العقار"),
+                    const Divider(
                       color: Colors.grey,
                     ),
-                    CoustomDataDetails(
-                        imageurl: "Assets/images/88.png",
-                        title: "المساحة",
-                        ammount: "10"),
-                    Divider(
-                      color: Colors.grey.shade100,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CoustomDataDetails(
+                            imageurl: "Assets/images/88.png",
+                            title: "المساحة",
+                            ammount: "${controller.data!.plotArea}"),
+                        Divider(
+                          color: Colors.grey.shade100,
+                        ),
+                        CoustomDataDetails(
+                            imageurl: "Assets/images/8.png",
+                            title: "رقم الطابق",
+                            ammount: "${controller.data!.floorNumber}"),
+                        Divider(
+                          color: Colors.grey.shade100,
+                        ),
+                        CoustomDataDetails(
+                            imageurl: "Assets/images/8888888.png",
+                            title: "نوع الملكية",
+                            ammount: "${controller.data!.ownershipType}"),
+                        Divider(
+                          color: Colors.grey.shade100,
+                        ),
+                        CoustomDataDetails(
+                            imageurl: "Assets/images/125126-200.png",
+                            title: "عدد الغرف ",
+                            ammount: "${controller.data!.totalFloors}"),
+                        Divider(
+                          color: Colors.grey.shade100,
+                        ),
+                        CoustomDataDetails(
+                            imageurl: "Assets/images/125126-200.png",
+                            title: "عدد المطابخ",
+                            ammount: "${controller.data!.kitchens}"),
+                        Divider(
+                          color: Colors.grey.shade100,
+                        ),
+                        CoustomDataDetails(
+                            imageurl: "Assets/images/125126-200.png",
+                            title: "عدد غرف المعيشة",
+                            ammount: "${controller.data!.livingRooms}"),
+                        Divider(
+                          color: Colors.grey.shade100,
+                        ),
+                        CoustomDataDetails(
+                            imageurl: "Assets/images/125126-200.png",
+                            title: "عدد غرف النوم",
+                            ammount: "${controller.data!.bedrooms}"),
+
+                        Divider(
+                          color: Colors.grey.shade100,
+                        ),
+                        CoustomDataDetails(
+                            imageurl: "Assets/images/888.png",
+                            title: "نوع البائع",
+                            ammount: controller.data!.userType!),
+                        Divider(
+                          color: Colors.grey.shade100,
+                        ),
+                        CoustomDataDetails(
+                            imageurl: "Assets/images/8888.png",
+                            title: "الفرش",
+                            ammount: controller.data!.furnishing!),
+                        Divider(
+                          color: Colors.grey.shade100,
+                        ),
+                        const CoustomDataDetails(
+                            imageurl: "Assets/images/88888.png",
+                            title: "الاتجاه",
+                            ammount: "قبلة"),
+                        Divider(
+                          color: Colors.grey.shade100,
+                        ),
+                        const CoustomDataDetails(
+                            imageurl: "Assets/images/8888888.png",
+                            title: "الحالة",
+                            ammount: "جيدة جدا"),
+
+                        Divider(
+                          color: Colors.grey.shade100,
+                        ),
+                      ],
                     ),
-                    CoustomDataDetails(
-                        imageurl: "Assets/images/8.png",
-                        title: "رقم الطابق",
-                        ammount: "10"),
-                    Divider(
-                      color: Colors.grey.shade100,
-                    ),
+                   const  CoustomLabel(label: "الموقع"),
                     CoustomDataDetails(
                         imageurl: "Assets/images/8888888.png",
-                        title: "نوع الملكية",
-                        ammount: "كاتب بالعدل"),
+                        title: "المدينة",
+                        ammount: controller.data!.location!.city!),
                     Divider(
                       color: Colors.grey.shade100,
                     ),
-                    CoustomDataDetails(
-                        imageurl: "Assets/images/125126-200.png",
-                        title: "عدد الغرف",
-                        ammount: "155"),
-                    Divider(
-                      color: Colors.grey.shade100,
-                    ),
-                    CoustomDataDetails(
-                        imageurl: "Assets/images/888.png",
-                        title: "نوع البائع",
-                        ammount: "تاجر"),
-                    Divider(
-                      color: Colors.grey.shade100,
-                    ),
-                    CoustomDataDetails(
-                        imageurl: "Assets/images/8888.png",
-                        title: "الفرش",
-                        ammount: "مفروش"),
-                    Divider(
-                      color: Colors.grey.shade100,
-                    ),
-                    CoustomDataDetails(
-                        imageurl: "Assets/images/88888.png",
-                        title: "الاتجاه",
-                        ammount: "قبلة"),
-                    Divider(
-                      color: Colors.grey.shade100,
-                    ),
+
                     CoustomDataDetails(
                         imageurl: "Assets/images/8888888.png",
-                        title: "الحالة",
-                        ammount: "جيدة جدا"),
+                        title: "المنطقة",
+                        ammount: controller.data!.location!.region!),
+                    Divider(
+                      color: Colors.grey.shade100,
+                    ),
+
+                    CoustomDataDetails(
+                        imageurl: "Assets/images/8888888.png",
+                        title: "الشارع",
+                        ammount: controller.data!.location!.street!),
+
                     Divider(
                       color: Colors.grey.shade100,
                     ),
                     CoustomLabel(label: "ميزات إضافية"),
                     SizedBox(height: 10.sp,),
-                    CoustomDataDetails(
+                    controller.data!.elevator!?const CoustomDataDetails(
+                        imageurl: "Assets/images/8888888.png",
+                        title: "مصعد",
+                        ammount: "1"):Container(),
+
+                    controller.data!.pool!?const CoustomDataDetails(
                         imageurl: "Assets/images/8888888.png",
                         title: "مسبح",
-                        ammount: "1"),
+                        ammount: "1"):Container(),
                     SizedBox(height: 10.sp,),
-                    CoustomLabel(label: "تفاصيل الإعلان"),
+                  const   CoustomLabel(label: "تفاصيل الإعلان"),
                     SizedBox(height: 10.sp,),
-                    CoustomDataDetails(
+                     CoustomDataDetails(
                         imageurl: "Assets/images/8888888.png",
                         title: "تاريخ النشر",
-                        ammount: "13/1/2024"),
+                        ammount:controller.data!.createdAt!),
                   ],
                 )
               ],
             ),
           ),
-        ));
+        ),
+      );}));
+
   }
 }

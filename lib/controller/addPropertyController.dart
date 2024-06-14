@@ -207,6 +207,10 @@ class AddPropertyController extends GetxController {
   gotonextscreen(){
     Get.toNamed(AppRoute.AddCoustomerData);
   }
+  uplodephotos(){}
+  uplodedetais(){
+
+  }
   @override
   void onInit() {
     userPhone=TextEditingController();

@@ -3,11 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:realestate/view/widget/addproperty/cousotomgallaryphoto.dart';
 import 'package:realestate/view/widget/addproperty/coustomphotocard.dart';
-import 'package:realestate/view/widget/onbordringwidget/CoustomElevetedButtom.dart';
 
 import '../../../controller/addPropertyController.dart';
 import '../../../core/constanat/colors.dart';
-import '../../widget/addproperty/coustombuttombar.dart';
 
 class AddProperyPhotos extends StatelessWidget {
   const AddProperyPhotos({super.key});
@@ -26,14 +24,14 @@ class AddProperyPhotos extends StatelessWidget {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
                 onPressed: (){controller.removepage();},
-                child: Text(
+                child:const Text(
                   "إلغاء",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
               ElevatedButton(
                 onPressed: (){controller.nextpage();},
-                child: Text(
+                child:const Text(
                   "التالي",
                   style: TextStyle(color: Colors.black),
                 ),
@@ -43,7 +41,7 @@ class AddProperyPhotos extends StatelessWidget {
           ),
         ),
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             "إضافــة عقــار",
             style: TextStyle(color: Colors.white),
           ),
@@ -55,7 +53,7 @@ class AddProperyPhotos extends StatelessWidget {
             return SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   ElevatedButton(
@@ -84,9 +82,9 @@ class AddProperyPhotos extends StatelessWidget {
                             },
                           );
                         }
-                        return CoustomPhotoCard();
+                        return const CoustomPhotoCard();
                       } else {
-                        return CoustomPhotoCard();
+                        return const  CoustomPhotoCard();
                       }
                     },
                   )

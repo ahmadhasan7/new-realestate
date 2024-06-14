@@ -46,7 +46,7 @@ class DetailsScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   PropertyModel data=controller.data[index];
                   return InkWell(
-                    onTap: (){controller.goToPropertyDetails();},
+                    onTap: (){controller.goToPropertyDetails(data.slug!);},
                     child: Stack(
                       children: [
                         Container(
@@ -98,7 +98,7 @@ class DetailsScreen extends StatelessWidget {
                                               borderRadius:
                                               BorderRadius.circular(10)),
                                           child:  Text(
-                                            data.title!,
+                                            data.title!.substring(0,6),
                                             style: TextStyle(
                                                 color: AppColors.greencolor),
                                           ),
