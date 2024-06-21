@@ -13,7 +13,6 @@ class CoustomTextFieldProperty extends StatelessWidget {
       {Key? key,
       this.obscureText,
       required this.hinttext,
-      // required this.labeltext,
       required this.mycontroller,
       required this.valid,
       required this.isNumber, required this.width})

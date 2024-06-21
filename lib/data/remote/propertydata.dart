@@ -12,10 +12,9 @@ class PropertyData {
 
   getPropertyData(
       String property_type,String token) async {
-    print(Staticdata.token);
     String link="${ApiLink.property}?property_type=${property_type}";
     var response =
-    await crud.getdataasmap(link,token
+    await crud.getDataAsMap(linkurl: link,
     );
     return response.fold((l) => l, (r) => r);
   }

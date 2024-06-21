@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../core/constanat/image.dart';
-import '../../../core/functions/validetor.dart';
 import '../auth/customtextformauth.dart';
-class CoustomPhoto extends StatelessWidget {
-  const CoustomPhoto({super.key});
+class Coustomphoto extends StatelessWidget {
+  const Coustomphoto({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +24,9 @@ class CoustomPhoto extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.9,
               child: CustomTextFormAuth(
                 hinttext: 'ابحث عن عقارك',
-                mycontroller: null,
+                mycontroller: TextEditingController(),
                 valid: (value) {
-                  Validetor("email", 10, 10, value!);
+
                 },
                 isNumber: false,
                 icons: Icon(Icons.search),

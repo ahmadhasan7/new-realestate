@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../../../controller/auth/signincontroller.dart';
 import '../../../core/class/handlingrequstveiw.dart';
 import '../../../core/constanat/colors.dart';
-import '../../../core/functions/validetor.dart';
+import '../../../core/functions/validinput.dart';
 import '../../widget/auth/coustombuttonauth.dart';
 import '../../widget/auth/customtextformauth.dart';
 
@@ -74,7 +74,7 @@ class SignIn extends StatelessWidget {
                           hinttext: 'البريد الاكتروني',
                           mycontroller: contoller.email,
                           valid: (val) {
-                            Validetor("email", 10, 10, val!);
+                            validInput("email", 10, 10, val!);
                           },
                           isNumber: false,
                           icons: Icon(Icons.person),
@@ -87,7 +87,7 @@ class SignIn extends StatelessWidget {
                           hinttext: 'كلمة السر',
                           mycontroller: contoller.password,
                           valid: (val) {
-                            Validetor("password", 10, 10, val!);
+                            validInput("password", 10, 10, val!);
                           },
                           isNumber: false,
                           icons: Icon(Icons.password),

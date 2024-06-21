@@ -58,7 +58,7 @@ class AddProperyPhotos extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      controller.pickImages();
+                      controller.pickImages(true);
                     },
                     child:const Text(
                       "أختر الصور",
@@ -68,7 +68,7 @@ class AddProperyPhotos extends StatelessWidget {
                   GridView.builder(
                     shrinkWrap: true,
                     itemCount: 12,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
                         mainAxisSpacing: 2,
                         crossAxisSpacing: 2),

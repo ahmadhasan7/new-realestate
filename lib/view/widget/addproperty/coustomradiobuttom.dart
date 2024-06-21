@@ -4,6 +4,7 @@ import 'package:realestate/core/constanat/colors.dart';
 
 class CoustomRedioButton extends StatelessWidget {
   final String val;
+  final String title;
   final String groupval;
   final void Function(String?) onchanged;
 
@@ -11,7 +12,7 @@ class CoustomRedioButton extends StatelessWidget {
       {super.key,
       required this.val,
       required this.groupval,
-      required this.onchanged});
+      required this.onchanged, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class CoustomRedioButton extends StatelessWidget {
           onChanged: onchanged,
           activeColor: AppColors.greencolor,
         ),
-        Text(val,style: TextStyle(fontFamily: "Tejwal",fontSize: 20.sp),)
+        Text(title,style: TextStyle(fontFamily: "Tejwal",fontSize: 20.sp),)
       ],
     );
   }}

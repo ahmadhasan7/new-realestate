@@ -28,13 +28,13 @@ class GetOneProperty {
   bool? pool;
   bool? solarPanels;
   String? furnishing;
-  Null? direction;
+  String? direction;
   int? totalRooms;
   Null? rentType;
   String? coverPhoto;
   bool? publishedStatus;
   int? views;
-  List<Null>? images;
+  List<Images>? images;
 
   GetOneProperty(
       {this.id,
@@ -112,12 +112,12 @@ class GetOneProperty {
     coverPhoto = json['cover_photo'];
     publishedStatus = json['published_status'];
     views = json['views'];
-    // if (json['images'] != null) {
-    //   images = <Null>[];
-    //   json['images'].forEach((v) {
-    //     images!.add(new Null.fromJson(v));
-    //   });
-    // }
+    if (json['images'] != null) {
+      images = <Images>[];
+      json['images'].forEach((v) {
+        images!.add(new Images.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -159,9 +159,9 @@ class GetOneProperty {
     data['cover_photo'] = this.coverPhoto;
     data['published_status'] = this.publishedStatus;
     data['views'] = this.views;
-    // if (this.images != null) {
-    //   data['images'] = this.images!.map((v) => v.toJson()).toList();
-    // }
+    if (this.images != null) {
+      data['images'] = this.images!.map((v) => v.toJson()).toList();
+    }
     return data;
   }
 }
@@ -184,6 +184,28 @@ class Location {
     data['city'] = this.city;
     data['region'] = this.region;
     data['street'] = this.street;
+    return data;
+  }
+}
+
+class Images {
+  int? pkid;
+  String? image;
+  int? property;
+
+  Images({this.pkid, this.image, this.property});
+
+  Images.fromJson(Map<String, dynamic> json) {
+    pkid = json['pkid'];
+    image = json['image'];
+    property = json['property'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['pkid'] = this.pkid;
+    data['image'] = this.image;
+    data['property'] = this.property;
     return data;
   }
 }

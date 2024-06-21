@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../controller/auth/signup.dart';
 import '../../../core/class/handlingrequstveiw.dart';
 import '../../../core/constanat/colors.dart';
-import '../../../core/functions/validetor.dart';
+import '../../../core/functions/validinput.dart';
 import '../../widget/auth/coustombuttonauth.dart';
 import '../../widget/auth/customtextformauth.dart';
 
@@ -64,7 +64,7 @@ class SignUp extends StatelessWidget {
                   hinttext: 'اسم الأول',
                   mycontroller: contoller.firstname,
                   valid: (val) {
-                    Validetor("username", 10, 10, val!);
+                    validInput("username", 10, 10, val!);
                   },
                   isNumber: false,
                   icons: Icon(Icons.person),
@@ -76,7 +76,7 @@ class SignUp extends StatelessWidget {
                       hinttext: 'اسم الأخير',
                       mycontroller: contoller.lastname,
                       valid: (val) {
-                        Validetor("username", 10, 10, val!);
+                        validInput("username", 10, 10, val!);
                       },
                       isNumber: false,
                       icons: Icon(Icons.person),
@@ -89,7 +89,7 @@ class SignUp extends StatelessWidget {
                 hinttext: 'البريد الالكتروني',
                 mycontroller: contoller.email,
                 valid: (val) {
-                  Validetor("email", 10, 10, val!);
+                  validInput("email", 10, 10, val!);
                 },
                 isNumber: false,
                 icons: Icon(Icons.email),
@@ -100,7 +100,7 @@ class SignUp extends StatelessWidget {
                       hinttext: 'كلمة السر',
                       mycontroller: contoller.password,
                       valid: (val) {
-                        Validetor("phone", 10, 10, val!);
+                        validInput("phone", 10, 10, val!);
                       },
                       isNumber: true,
                       icons: Icon(Icons.phone),
@@ -112,7 +112,7 @@ class SignUp extends StatelessWidget {
                       hinttext: 'اعادة كلمة السر ',
                       mycontroller: contoller.conipassword,
                       valid: (val) {
-                        Validetor("password", 10, 10, val!);
+                        validInput("password", 10, 10, val!);
                       },
                       isNumber: false,
                       icons: Icon(Icons.password),

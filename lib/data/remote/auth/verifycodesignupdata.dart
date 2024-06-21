@@ -10,7 +10,7 @@ class Verifycodesignupdata {
   PostVerifycodesignup(
       String email,String verify) async {
     var response =
-    await crud.postData('https://housetech.onrender.com/api/v1/auth/verify-email/', {
+    await crud.postData('https://housetech.onrender.com/api/v1/auth/verify-email/', "",{
       'email':email,
       'otp':verify
     },

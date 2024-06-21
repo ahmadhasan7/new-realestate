@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:realestate/core/constanat/colors.dart';
-import 'package:realestate/core/constanat/image.dart';
-import 'package:realestate/core/functions/validetor.dart';
 import 'package:realestate/data/static/categorydata.dart';
-import 'package:realestate/view/widget/Coustom_Text_Form_Field.dart';
-import 'package:realestate/view/widget/auth/coustombuttonauth.dart';
 import 'package:realestate/view/widget/mainpage/coustomcategory.dart';
 import 'package:realestate/view/widget/mainpage/coustomphoto.dart';
 import 'package:get/get.dart';
 import '../../controller/mainpagecontroller.dart';
-import '../widget/auth/customtextformauth.dart';
 import '../widget/imageslider.dart';
 import '../widget/mainpage/coustonbuttom.dart';
 
@@ -22,25 +17,25 @@ class MainPageScreen extends StatelessWidget {
     MainScreenController controller =Get.put(MainScreenController());
     return Scaffold(
       backgroundColor: Color(0xffE2FFFFFF),
-      drawer: Drawer(),
+      drawer:const Drawer(),
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.grey),
+        iconTheme:const IconThemeData(color: Colors.grey),
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "الرئيسية",
           style: TextStyle(color: AppColors.greencolor, fontFamily: "Tejwal"),
         ),
         actions: [
           IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.favorite_border,
               )),
           IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.notification_add_outlined,
               ))
         ],
@@ -48,9 +43,10 @@ class MainPageScreen extends StatelessWidget {
       body: SafeArea(
         child: ListView(
           children: [
-            CoustomPhoto(),
+
+            const Coustomphoto(),
             Padding(
-              padding: EdgeInsets.all(15),
+              padding:const  EdgeInsets.all(15),
               child: Column(
                 children: [
                   Row(
@@ -70,7 +66,7 @@ class MainPageScreen extends StatelessWidget {
                   SizedBox(
                     height: 190.sp,
                     child: GridView.builder(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics:const  NeverScrollableScrollPhysics(),
                         itemCount: CategoryData().data.length,
                         gridDelegate:
                         SliverGridDelegateWithFixedCrossAxisCount(

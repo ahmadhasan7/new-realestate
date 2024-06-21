@@ -10,7 +10,7 @@ class SignInData {
   PostSignUpdata(
        String email, String password) async {
     var response =
-    await crud.postData('https://housetech.onrender.com/api/v1/auth/login/', {
+    await crud.postData('https://housetech.onrender.com/api/v1/auth/login/',"", {
       'password': password,
       'email': email,
 

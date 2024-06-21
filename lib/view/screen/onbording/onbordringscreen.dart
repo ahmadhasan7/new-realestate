@@ -16,19 +16,19 @@ class OnBordringScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Expanded(
+            const Expanded(
               child: CoustomSliderOnBordring(),
               flex: 3,
             ),
             Expanded(
               flex: 1,
               child: SingleChildScrollView(
-                child: Container(
-                  child: Column(
+                child:  Container(
+                  child: const Column(
                     children: [
-                      CoustomDotet(),
-                      SizedBox(height: 20), // Adjusted the SizedBox height
-                      CoustomElevetedButtomOnBording(),
+                       CoustomDotet(),
+                       SizedBox(height: 20), // Adjusted the SizedBox height
+                       CoustomElevetedButtomOnBording(),
                     ],
                   ),
                 ),

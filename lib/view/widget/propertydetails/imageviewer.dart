@@ -4,14 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:realestate/view/widget/coustomimage.dart';
 class ImageViewer extends StatefulWidget {
   final List<String> imageUrls;
-  List<String> imageurl=[
-    "Assets/images/ard.jpg",
-    "Assets/images/bayt.jpg",
-    "Assets/images/benaa.jpg",
-    "Assets/images/fela.jpg",
-    "Assets/images/mahl.jpg",
-    "Assets/images/maktab.jpg",
-  ];
+
   ImageViewer({required this.imageUrls});
 
   @override
@@ -29,10 +22,10 @@ class _ImageViewerState extends State<ImageViewer> {
           alignment: Alignment.bottomCenter,
           children: [
             CarouselSlider(
-              items: widget.imageurl.map((url) {
+              items: widget.imageUrls.map((url) {
                 return Builder(
                   builder: (BuildContext context) {
-                    return Image.asset(
+                    return Image.network(
                       url,
                       width: double.infinity,
                       height: 100.sp,

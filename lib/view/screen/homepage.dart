@@ -19,8 +19,8 @@ class HomePage extends StatelessWidget {
         bottomNavigationBar: CurvedNavigationBar(
           key: homePageControllerImp.bottomNavigationKey,
           index: 0,
-          items: [
-            CurvedNavigationBarItem(
+          items:const [
+             CurvedNavigationBarItem(
               child: Icon(Icons.home_outlined),
               label: 'الرئيسية',
             ),
@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
           buttonBackgroundColor: Colors.white,
           backgroundColor:AppColors.greencolor,
           animationCurve: Curves.easeInOut,
-          animationDuration: Duration(milliseconds: 600),
+          animationDuration:const  Duration(milliseconds: 600),
           onTap: (index) {
             homePageControllerImp.onpress(index);
           },

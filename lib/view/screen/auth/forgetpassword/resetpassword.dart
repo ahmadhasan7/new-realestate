@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import '../../../../controller/auth/forgetpassword/resetpassword.dart';
 import '../../../../core/class/handlingrequstveiw.dart';
 import '../../../../core/constanat/colors.dart';
-import '../../../../core/functions/validetor.dart';
+import '../../../../core/functions/validinput.dart';
 import '../../../widget/auth/customtextformauth.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
@@ -56,7 +56,7 @@ class ResetPasswordScreen extends StatelessWidget {
                   hinttext: "ادخل كلمة المرور الجديدة",
                   mycontroller: controller.newpassword,
                   valid: (val) {
-                    Validetor("email", 5, 25, val!);
+                    validInput("email", 5, 25, val!);
                   },
                   isNumber: false)
             ],

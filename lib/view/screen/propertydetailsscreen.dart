@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:realestate/core/class/handlingrequstveiw.dart';
 import 'package:realestate/core/constanat/colors.dart';
+import 'package:realestate/core/constanat/routing.dart';
 import 'package:realestate/view/widget/propertydetails/coustomdatadetails.dart';
 import 'package:realestate/view/widget/propertydetails/coustomlabel.dart';
 import 'package:realestate/view/widget/propertydetails/imageviewer.dart';
@@ -22,7 +23,7 @@ class PropertyDetailsScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-               const  Icon(
+                const  Icon(
                   Icons.phone,
                   color: AppColors.greencolor,
                 ),
@@ -45,7 +46,7 @@ class PropertyDetailsScreen extends StatelessWidget {
         ),
         body: GetBuilder<PropertyDetailsController>(
         builder: (controller){
-      return HandlingDataView(
+          return HandlingDataView(
         statusRequest: controller.statusRequest,
         widget: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -54,7 +55,7 @@ class PropertyDetailsScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 ImageViewer(
-                  imageUrls: [],
+                  imageUrls: controller.imageurl,
                 ),
                 SizedBox(
                   height: 10.sp,
@@ -80,7 +81,7 @@ class PropertyDetailsScreen extends StatelessWidget {
                       child: Text(
                         controller.data!.propertyStatus=='For Rent' ?"للإجار":"للبيع",
                         textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                       ),
                     ),
                   ],
@@ -98,7 +99,7 @@ class PropertyDetailsScreen extends StatelessWidget {
                     ),
                     const CoustomLabel(label: "وصف العقار"),
                     Text("${controller.data!.description}",
-                      style: TextStyle(fontFamily: "Tejwal"),
+                      style: const TextStyle(fontFamily: "Tejwal"),
                       textAlign: TextAlign.end,
                     ),
                     SizedBox(
@@ -242,7 +243,7 @@ class PropertyDetailsScreen extends StatelessWidget {
             ),
           ),
         ),
-      );}));
+              );}));
 
   }
 }

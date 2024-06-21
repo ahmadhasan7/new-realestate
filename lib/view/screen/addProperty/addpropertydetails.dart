@@ -4,14 +4,16 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:realestate/core/functions/validinput.dart';
 import 'package:realestate/view/widget/addproperty/coustombuttombar.dart';
 import 'package:realestate/view/widget/addproperty/coustompanner.dart';
+import 'package:realestate/view/widget/addproperty/coustomphotocard.dart';
 import 'package:realestate/view/widget/addproperty/coustomradiobuttom.dart';
-
 import '../../../controller/addPropertyController.dart';
 import '../../../core/constanat/colors.dart';
-import 'addpropertytext.dart';
-import 'dropdownproperty.dart';
+import '../../widget/addproperty/addpropertytext.dart';
+import '../../widget/addproperty/coustombuttomaditionalfuture.dart';
+import '../../widget/addproperty/dropdownproperty.dart';
 
 class AddPropertyDetails extends StatelessWidget {
   const AddPropertyDetails({super.key});
@@ -33,211 +35,383 @@ class AddPropertyDetails extends StatelessWidget {
       ),
       body: GetBuilder<AddPropertyController>(builder: (controller) {
         return Container(
-              decoration:const  BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("Assets/images/12.jpg"),
-                  // Set your background image here
-                  fit: BoxFit.cover,
-                ),
-              ),
-          child: SingleChildScrollView(
-              child: Column(children: [
-            CoustomPanner(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CoustomRedioButton(
-                  val: "آجار",
-                  groupval: controller.stutus,
-                  onchanged: (val) {
-                    controller.changestutus(val);
-                  },
-                ),
-                CoustomRedioButton(
-                  val: "بيع",
-                  groupval: controller.stutus,
-                  onchanged: (val) {
-                    controller.changestutus(val);
-                  },
-                ),
-              ],
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("Assets/images/12.jpg"),
+              fit: BoxFit.cover,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
+          ),
+          child: Form(
+            key: controller.propertydetailsKey,
+            child: SingleChildScrollView(
+                child: Column(children: [
+              CoustomPanner(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  DropDownProperty(
-                    items: controller.tybeOfProperty,
-                    onchanged: (String? val) {
-                      controller.tybeOfPropertyupdate(val!);
-                    },
-                    value: controller.tybeOfPropertyselected,
-                    nameofitem: 'نوع العقار',
-                    ireq: true,
+                  CoustomRedioButton(
+                    val: "Foe Rent",
+                    groupval: controller.stutus,
+                    onchanged: (val) {
+                      controller.changestutus(val);
+                    }, title: 'اجار',
                   ),
-                  SizedBox(
-                    height: 10.sp,
+                  CoustomRedioButton(
+                    val: "For Sale",
+                    groupval: controller.stutus,
+                    onchanged: (val) {
+                      controller.changestutus(val);
+                    }, title: 'بيع',
                   ),
-                  controller.changeitems
-                      ? AddPropertyText(
-                          nameofitem: 'السعر',
-                          isreq: true,
-                          controller: controller.price,
-                        )
-                      : AddPropertyText(
-                          nameofitem: 'الاجار',
-                          isreq: true,
-                          controller: controller.price,
-                        ),
-                  AddPropertyText(
-                    nameofitem: 'المساحة',
-                    isreq: true,
-                    controller: controller.size,
-                  ),
-                  DropDownProperty(
-                    items: controller.floor,
-                    onchanged: (String? val) {
-                      controller.floorupdate(val!);
-                    },
-                    value: controller.floorselected,
-                    nameofitem: 'رقم الطابق',
-                    ireq: true,
-                  ),
-                  SizedBox(
-                    height: 10.sp,
-                  ),
-                  DropDownProperty(
-                    items: controller.prpertyFounder,
-                    onchanged: (String? val) {
-                      controller.prpertyFounderupdate(val!);
-                    },
-                    value: controller.prpertyFounderselected,
-                    nameofitem: 'نوع الملكية',
-                    ireq: true,
-                  ),
-                  SizedBox(
-                    height: 10.sp,
-                  ),
-                  AddPropertyText(
-                    nameofitem: 'عدد الغرف',
-                    isreq: true,
-                    controller: controller.numOfRoom,
-                  ),
-                  controller.changeitems
-                      ? DropDownProperty(
-                          items: controller.Ownertype,
-                          onchanged: (String? val) {
-                            controller.Ownertypeupdate(val!);
-                          },
-                          value: controller.Ownertypeselected,
-                          nameofitem: 'نوع البائع',
-                          ireq: true,
-                        )
-                      : DropDownProperty(
-                          items: controller.Rentalperiod,
-                          onchanged: (String? val) {
-                            controller.Ownertypeupdate(val!);
-                          },
-                          value: controller.Rentalperiodselected,
-                          nameofitem: 'طبيعة الاجار',
-                          ireq: true,
-                        ),
-                  SizedBox(
-                    height: 10.sp,
-                  ),
-                  DropDownProperty(
-                    items: controller.cladding,
-                    onchanged: (String? val) {
-                      controller.claddingupdate(val!);
-                    },
-                    value: controller.claddingselected,
-                    nameofitem: 'الفرش',
-                    ireq: true,
-                  ),
-                  SizedBox(
-                    height: 10.sp,
-                  ),
-                  DropDownProperty(
-                    items: controller.direction,
-                    onchanged: (String? val) {
-                      controller.directionupdate(val!);
-                    },
-                    value: controller.directionselected,
-                    nameofitem: 'الاتجاه',
-                    ireq: true,
-                  ),
-                  SizedBox(
-                    height: 10.sp,
-                  ),
-                  DropDownProperty(
-                    items: controller.condition,
-                    onchanged: (String? val) {
-                      controller.conditionupdate(val!);
-                    },
-                    value: controller.conditionselected,
-                    nameofitem: 'الإكساء',
-                    ireq: false,
-                  ),
-                  SizedBox(
-                    height: 10.sp,
-                  ),
-                  DropDownProperty(
-                    items: controller.location,
-                    onchanged: (String? val) {
-                      controller.locationupdate(val!);
-                    },
-                    value: controller.locationselected,
-                    nameofitem: 'الموقع',
-                    ireq: true,
-                  ),
-                  SizedBox(
-                    height: 20.sp,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width / 2,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          width: 125.sp,
-                          child: Text(
-                            "الوصف",
-                            style: TextStyle(
-                                fontFamily: "Tejwal",
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15.sp),
-                            textAlign: TextAlign.end,
-                          ),
+                        GestureDetector(
+                          onTap: () {
+                            controller.pickImages(false);
+                          },
+                          child: controller.imgFile != null
+                              ? Container(
+                                  padding: EdgeInsets.all(5),
+                                  width: 100.w,
+                                  height: 100.h,
+                                  child: Image.file(
+                                    controller.imgFile!,
+                                    fit: BoxFit.cover,
+                                  ),
+                                )
+                              : Container(
+                                  width: 100.w,
+                                  height: 100.h,
+                                  child: CoustomPhotoCard(),
+                                ),
                         ),
-                        Container(
-                          padding: EdgeInsets.only(left: 50),
-                          width: 5.sp,
-                          child: Icon(
-                            Icons.star,
-                            color: Colors.yellow,
-                            size: 15,
-                          ),
+                        Text(
+                          "أختر صورة رئيسية لعقارك",
+                          style: TextStyle(fontFamily: "Tejwal", fontSize: 15.sp),
                         ),
                       ],
                     ),
-                  ),
-                  TextFormField(
-                    controller: controller.description,
-                    maxLines: 5,
-                    decoration:const  InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'اترك وصف عقارك هنا',
+                    DropDownProperty(
+                      items: controller.items.tybeOfProperty,
+                      onchanged: (String? val) {
+                        controller.tybeOfPropertyupdate(val!);
+                      },
+                      value: controller.tybeOfPropertyselected,
+                      nameofitem: 'نوع العقار',
+                      ireq: true,
                     ),
-                  ),
-                  SizedBox(
-                    height: 20.sp,
-                  ),
-                  CoustomButtomBar(onPressednext: () {controller.gotonextscreen();}, onPressedremove: () {})
-                ],
+                    SizedBox(height: 14.sp,),
+
+                    AddPropertyText(
+                      nameofitem: 'اسم العقار',
+                      isreq: true,
+                      controller: controller.title,
+                      isnum: false, valid: (String? val ) {
+                        return validInput(val!, 3, 10, "type");
+                    },
+                    ),
+                    SizedBox(
+                      height: 10.sp,
+                    ),
+                    controller.changeitems
+                        ? AddPropertyText(
+                            nameofitem: 'السعر',
+                            isreq: true,
+                            controller: controller.price,
+                            isnum: true,
+                      valid: (String? val ) {
+                        return validInput(val!, 3, 15, "type");
+                      },
+                          )
+                        : AddPropertyText(
+                            isnum: true,
+                            nameofitem: 'الاجار',
+                            isreq: true,
+                            controller: controller.price,
+                      valid: (String? val ) {
+                        return validInput(val!, 3, 15, "type");
+                      },
+                          ),
+                    AddPropertyText(
+                      isnum: true,
+                      nameofitem: 'المساحة',
+                      isreq: true,
+                      controller: controller.size,
+                      valid: (String? val ) {
+                        return validInput(val!, 3, 6, "type");
+                      },
+                    ),
+                    DropDownProperty(
+                      items: controller.items.floor,
+                      onchanged: (String? val) {
+                        controller.floorupdate(val!);
+                      },
+                      value: controller.floorselected,
+                      nameofitem: 'رقم الطابق',
+                      ireq: true,
+                    ),
+                    SizedBox(
+                      height: 10.sp,
+                    ),
+                    DropDownProperty(
+                      items: controller.items.prpertyFounder,
+                      onchanged: (String? val) {
+                        controller.prpertyFounderupdate(val!);
+                      },
+                      value: controller.prpertyFounderselected,
+                      nameofitem: 'نوع الملكية',
+                      ireq: true,
+                    ),
+                    SizedBox(
+                      height: 10.sp,
+                    ),
+                    AddPropertyText(
+                      isnum: true,
+                      nameofitem: 'عدد الغرف',
+                      isreq: true,
+                      controller: controller.numOfRoom,
+                      valid: (String? val ) {
+                        return validInput(val!, 1, 2, "type");
+                      },
+                    ),
+                    AddPropertyText(
+                      isnum: true,
+                      nameofitem: 'عدد غرف النوم',
+                      isreq: true,
+                      controller: controller.bedroom,
+                      valid: (String? val ) {
+                        return validInput(val!, 1, 2, "type");
+                      },
+                    ),
+                    AddPropertyText(
+                      isnum: true,
+                      nameofitem: 'عدد غرف السكن',
+                      isreq: true,
+                      controller: controller.livingroom,
+                      valid: (String? val ) {
+                        return validInput(val!, 1, 2, "type");
+                      },
+                    ),
+                    AddPropertyText(
+                      isnum: true,
+                      nameofitem: 'عدد المطابخ',
+                      isreq: true,
+                      controller: controller.kitchin,
+                      valid: (String? val ) {
+                        return validInput(val!, 1, 2, "type");
+                      },
+                    ),
+                    AddPropertyText(
+                      isnum: true,
+                      nameofitem: 'عدد الحمامات',
+                      isreq: true,
+                      controller: controller.bathroom,
+                      valid: (String? val ) {
+                        return validInput(val!, 1, 2, "type");
+                      },
+                    ),
+                    AddPropertyText(
+                      isnum: true,
+                      nameofitem: 'رقم العقار',
+                      isreq: true,
+                      controller: controller.numofproperty,
+                      valid: (String? val ) {
+                        return validInput(val!, 1, 2, "type");
+                      },
+                    ),
+                    controller.changeitems
+                        ? DropDownProperty(
+                            items: controller.items.Ownertype,
+                            onchanged: (String? val) {
+                              controller.Ownertypeupdate(val!);
+                            },
+                            value: controller.Ownertypeselected,
+                            nameofitem: 'نوع البائع',
+                            ireq: true,
+                          )
+                        : DropDownProperty(
+                            items: controller.items.Rentalperiod,
+                            onchanged: (String? val) {
+                              controller.Ownertypeupdate(val!);
+                            },
+                            value: controller.Rentalperiodselected,
+                            nameofitem: 'طبيعة الاجار',
+                            ireq: true,
+                          ),
+                    SizedBox(
+                      height: 10.sp,
+                    ),
+                    DropDownProperty(
+                      items: controller.items.cladding,
+                      onchanged: (String? val) {
+                        controller.claddingupdate(val!);
+                      },
+                      value: controller.claddingselected,
+                      nameofitem: 'الفرش',
+                      ireq: true,
+                    ),
+                    SizedBox(
+                      height: 10.sp,
+                    ),
+                    DropDownProperty(
+                      items: controller.items.direction,
+                      onchanged: (String? val) {
+                        controller.directionupdate(val!);
+                      },
+                      value: controller.directionselected,
+                      nameofitem: 'الاتجاه',
+                      ireq: true,
+                    ),
+                    SizedBox(
+                      height: 10.sp,
+                    ),
+                    DropDownProperty(
+                      items: controller.items.condition,
+                      onchanged: (String? val) {
+                        controller.conditionupdate(val!);
+                      },
+                      value: controller.conditionselected,
+                      nameofitem: 'الإكساء',
+                      ireq: false,
+                    ),
+                    SizedBox(
+                      height: 10.sp,
+                    ),
+                    DropDownProperty(
+                      items: controller.items.location,
+                      onchanged: (String? val) {
+                        controller.locationupdate(val!);
+                      },
+                      value: controller.locationselected,
+                      nameofitem: 'الموقع',
+                      ireq: true,
+                    ),
+                    SizedBox(height: 10.sp,),
+                    AddPropertyText(
+                      isnum: false,
+                      nameofitem: 'الشارع ',
+                      isreq: true,
+                      controller: controller.street,
+                      valid: (String? val ) {
+                        return validInput(val!, 1, 20, "type");
+                      },
+                    ),
+                    AddPropertyText(
+                      isnum: false,
+                      nameofitem: 'المنطقة ',
+                      isreq: true,
+                      controller: controller.regoin,
+                      valid: (String? val ) {
+                        return validInput(val!, 3, 20, "type");
+                      },
+                    ),
+
+                    SizedBox(
+                      height: 20.sp,
+                    ),
+                    Container(
+                        padding: EdgeInsets.all(5.sp),
+                        width: double.infinity,
+                        child: Text(
+                          "ميزات اضافية",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontFamily: "Tejwal",
+                              fontSize: 16.sp),
+                          textAlign: TextAlign.end,
+                        )),
+                    Column(
+                      children: [
+                        Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            CoustomButtomAditional(
+                              varname: controller.pool,
+                              onTap: () {
+                                controller
+                                    .changestateofAdditionalfeatures("pool");
+                              }, label: 'مسبح',
+                            ),
+
+                            CoustomButtomAditional(
+                              varname: controller.solar_panels,
+                              onTap: () {
+                                controller
+                                    .changestateofAdditionalfeatures("solar_panels");
+                              }, label: 'طاقة شمسية',
+                            )
+                          ],
+                        ),
+                        SizedBox(height: 10.sp,),
+                        CoustomButtomAditional(
+                          varname: controller.elevator,
+                          onTap: () {
+                            controller
+                                .changestateofAdditionalfeatures("elevator");
+                          }, label: 'مصعد',
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 10.sp,),
+                    Container(
+                      width: MediaQuery.of(context).size.width / 2,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                           Container(
+                            width: 125.sp,
+                            child: Text(
+                              "الوصف",
+                              style: TextStyle(
+                                  fontFamily: "Tejwal",
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15.sp),
+                              textAlign: TextAlign.end,
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(left: 50),
+                            width: 5.sp,
+                            child: const Icon(
+                              Icons.star,
+                              color: Colors.yellow,
+                              size: 15,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    TextFormField(
+                      validator: (String? val){
+                        return validInput(val!, 1, 1000, "type");
+                      },
+                      controller: controller.description,
+                      maxLines: 5,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'اترك وصف عقارك هنا',
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.sp,
+                    ),
+                    CoustomButtomBar(
+                        onPressednext: () {
+                          controller.goToCoustomerPage(controller.propertydetailsKey);
+                        },
+                        onPressedremove: () {})
+                  ],
+                ),
               ),
-            ),
-          ])),
+            ])),
+          ),
         );
       }),
     );

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:realestate/core/functions/validinput.dart';
 
 import '../../../../controller/auth/forgetpassword/forgetpasswordcontroller.dart';
 import '../../../../core/class/handlingrequstveiw.dart';
 import '../../../../core/constanat/colors.dart';
-import '../../../../core/functions/validetor.dart';
 import '../../../widget/auth/coustombuttonauth.dart';
 import '../../../widget/auth/customtextformauth.dart';
 
@@ -50,7 +50,7 @@ class ForgetPassword extends StatelessWidget {
                 hinttext: 'رقم الهاتف',
                 mycontroller: controllerImp.phone,
                 valid: (val) {
-                  Validetor("phone", 3, 10, val!);
+                  validInput("phone", 3, 10, val!);
                 },
                 isNumber: true,
               ),

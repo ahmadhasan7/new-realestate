@@ -28,13 +28,13 @@ class PropertyModel {
   bool? pool;
   bool? solarPanels;
   String? furnishing;
-  Null? direction;
+  String? direction;
   int? totalRooms;
-  Null? rentType;
+  //String? rentType;
   String? coverPhoto;
   bool? publishedStatus;
   int? views;
-  List<Null>? images;
+  List<Images>? images;
 
   PropertyModel(
       {this.id,
@@ -68,7 +68,7 @@ class PropertyModel {
         this.furnishing,
         this.direction,
         this.totalRooms,
-        this.rentType,
+        //this.rentType,
         this.coverPhoto,
         this.publishedStatus,
         this.views,
@@ -108,13 +108,14 @@ class PropertyModel {
     furnishing = json['furnishing'];
     direction = json['direction'];
     totalRooms = json['total_rooms'];
+    //rentType = json['rent_type'];
     coverPhoto = json['cover_photo'];
     publishedStatus = json['published_status'];
     views = json['views'];
     if (json['images'] != null) {
-      images = <Null>[];
+      images = <Images>[];
       json['images'].forEach((v) {
-        //images!.add(new Null.fromJson(v));
+        images!.add(new Images.fromJson(v));
       });
     }
   }
@@ -154,12 +155,12 @@ class PropertyModel {
     data['furnishing'] = this.furnishing;
     data['direction'] = this.direction;
     data['total_rooms'] = this.totalRooms;
-    data['rent_type'] = this.rentType;
+   // data['rent_type'] = this.rentType;
     data['cover_photo'] = this.coverPhoto;
     data['published_status'] = this.publishedStatus;
     data['views'] = this.views;
     if (this.images != null) {
-      //data['images'] = this.images!.map((v) => v.toJson()).toList();
+      data['images'] = this.images!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -183,6 +184,28 @@ class Location {
     data['city'] = this.city;
     data['region'] = this.region;
     data['street'] = this.street;
+    return data;
+  }
+}
+
+class Images {
+  int? pkid;
+  String? image;
+  int? property;
+
+  Images({this.pkid, this.image, this.property});
+
+  Images.fromJson(Map<String, dynamic> json) {
+    pkid = json['pkid'];
+    image = json['image'];
+    property = json['property'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['pkid'] = this.pkid;
+    data['image'] = this.image;
+    data['property'] = this.property;
     return data;
   }
 }
