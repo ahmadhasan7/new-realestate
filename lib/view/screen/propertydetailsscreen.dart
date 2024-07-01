@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:realestate/core/class/handlingrequstveiw.dart';
 import 'package:realestate/core/constanat/colors.dart';
 import 'package:realestate/core/constanat/routing.dart';
@@ -236,7 +237,8 @@ class PropertyDetailsScreen extends StatelessWidget {
                      CoustomDataDetails(
                         imageurl: "Assets/images/8888888.png",
                         title: "تاريخ النشر",
-                        ammount:controller.data!.createdAt!),
+                        ammount:Jiffy.parse(controller.data!.createdAt!).format(pattern: 'MMMM do yyyy, h:mm:ss a')
+                      ),
                   ],
                 )
               ],

@@ -1,11 +1,9 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:realestate/core/class/stutusconntection.dart';
 import 'package:realestate/core/constanat/colors.dart';
-
 import '../constanat/image.dart';
 
 class HandlingDataView extends StatelessWidget {
@@ -18,21 +16,20 @@ class HandlingDataView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return statusRequest == StatusRequest.loading
-        ? const Center(
-        child: CircularProgressIndicator(color: AppColors.greencolor,))
+        ?  Center(
+        child: Lottie.asset(AppImage.loading,width: 250, height: 250, repeat: true))
         : statusRequest == StatusRequest.offlinefailure
-        ?const  Center(
-        child:CircularProgressIndicator() ,
+        ?  Center(
+        child: Lottie.asset(AppImage.offlineimage,width: 250, height: 250, repeat: true) ,
             )
         : statusRequest == StatusRequest.serverfailure
-        ? const Center(
-        //child: Lottie.asset(AppImage.falureimage,
-           // width: 250, height: 250)
+        ?  Center(
+      child: Lottie.asset(AppImage.serverfalureimage,width: 250, height: 250, repeat: true),
     )
         : statusRequest == StatusRequest.failure
-        ? const Center(
-       // child: Lottie.asset(AppImage.falureimage,
-           // width: 250, height: 250, repeat: true)
+        ?  Center(
+        child: Lottie.asset(AppImage.falureimage,
+            width: 250, height: 250, repeat: true)
     )
         : widget;
   }
@@ -48,8 +45,8 @@ class HandlingDataRequest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return statusRequest == StatusRequest.loading
-        ?const  Center(
-        child:CircularProgressIndicator())
+        ?  Center(
+        child:Lottie.asset(AppImage.loading,width: 250, height: 250, repeat: true))
         : statusRequest == StatusRequest.offlinefailure
         ? Center(
         child: Lottie.asset(AppImage.offlineimage,
@@ -82,8 +79,8 @@ class CoustomHandlingData extends StatelessWidget {
                     color: Colors.black.withOpacity(0.1),
                   ),
                 ),
-                const  Center(
-                    child:CircularProgressIndicator()),
+                  Center(
+                    child:Lottie.asset(AppImage.loading,width: 250, height: 250, repeat: true)),
 
               ]
             ),

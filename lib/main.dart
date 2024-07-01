@@ -4,7 +4,6 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:realestate/binding/initialbinding.dart';
-
 import 'core/class/crud.dart';
 import 'core/class/route.dart';
 import 'core/services/services.dart';

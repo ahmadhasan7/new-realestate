@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:realestate/view/screen/mainpagescreen.dart';
 
+import '../core/functions/notification.dart';
 import '../view/screen/addProperty/addPropertyPhoto.dart';
 
 
@@ -21,6 +22,11 @@ MainPageScreen(),
     update();
   }
 
-
   GlobalKey<CurvedNavigationBarState> bottomNavigationKey = GlobalKey();
+  @override
+  void onInit() {
+    fcmconfig();
+    notificationPermissinn();
+    super.onInit();
+  }
 }

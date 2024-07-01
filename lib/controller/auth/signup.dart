@@ -3,10 +3,8 @@ import 'package:get/get.dart';
 import 'package:realestate/core/constanat/routing.dart';
 import 'package:realestate/core/services/services.dart';
 import 'package:realestate/data/remote/auth/signup.dart';
-
 import '../../core/class/stutusconntection.dart';
 import '../../core/functions/handingdatacontroller.dart';
-
 abstract class SignUpcontroller extends GetxController{
   signUp();
   signinwithlinkedin();

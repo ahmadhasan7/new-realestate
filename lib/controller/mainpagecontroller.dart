@@ -1,8 +1,5 @@
 import 'package:get/get.dart';
-import 'package:realestate/core/class/stutusconntection.dart';
 import 'package:realestate/core/constanat/routing.dart';
-import 'package:realestate/core/services/services.dart';
-import 'package:realestate/data/models/propertymodel.dart';
 
 class MainScreenController extends GetxController{
 
