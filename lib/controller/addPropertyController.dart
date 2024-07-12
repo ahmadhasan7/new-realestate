@@ -9,7 +9,7 @@ import 'package:realestate/data/remote/prpertydetailsdata.dart';
 import '../core/class/stutusconntection.dart';
 import '../core/functions/handingdatacontroller.dart';
 import '../core/services/services.dart';
-import '../data/remote/prpertyimage.dart';
+import '../data/remote/propertyimage.dart';
 
 class AddPropertyController extends GetxController {
   List<File> selectedImages = [];
@@ -195,7 +195,7 @@ class AddPropertyController extends GetxController {
   uplodephotos(String id) async {
     print(statusRequest);
     var response = await propertyImages.AddPropertyImages(
-        "d8e80cb927b0fc9164e4bc0a71686a4054d41be5", selectedImages, id);
+        myServices.pref!.getString('token')!, selectedImages, id);
     statusRequest = handlingData(response);
     update();
     print(statusRequest);
@@ -241,7 +241,7 @@ class AddPropertyController extends GetxController {
         numOfRoom.text,
         Ownertypeselected.toString(),
         conditionselected,
-        "d8e80cb927b0fc9164e4bc0a71686a4054d41be5");
+        myServices.pref!.getString('token')!);
     statusRequest = handlingData(response);
     update();
     print(statusRequest);

@@ -29,8 +29,8 @@ class HomePage extends StatelessWidget {
               label: 'المفضلة',
             ),
             CurvedNavigationBarItem(
-              child: Icon(Icons.add_shopping_cart),
-              label: 'سلة المشتريات',
+              child: Icon(Icons.holiday_village),
+              label: 'عقاراتي',
             ),
             CurvedNavigationBarItem(
               child: Icon(Icons.control_point),

@@ -47,12 +47,15 @@ class CoustomDrower extends StatelessWidget {
                   ),
                   ListTile(
                     onTap: () {
+                      controller.goToPersonalInfo();
+
                     },
                     trailing: const Icon(Icons.settings),
-                    title: const Text("اعدادات الحساب",style: TextStyle(fontFamily: "Tejwal")),
+                    title: const Text("المعلومات الشخصية",style: TextStyle(fontFamily: "Tejwal")),
                   ),
                   ListTile(
                     onTap: () {
+                      controller.goToAboutUs();
                     },
                     trailing:const Icon(Icons.location_on_outlined),
                     title:const Text("من نحن؟",style: TextStyle(fontFamily: "Tejwal")),

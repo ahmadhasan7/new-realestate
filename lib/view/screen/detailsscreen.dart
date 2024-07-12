@@ -7,7 +7,9 @@ import 'package:realestate/data/models/propertymodel.dart';
 import 'package:realestate/data/static/onbordring.dart';
 import 'package:realestate/view/widget/coustomimage.dart';
 
-import '../../controller/detialscontroller.dart';
+import '../../controller/details_controllers/detialscontroller.dart';
+import '../widget/property_card.dart';
+
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key});
@@ -53,166 +55,19 @@ class DetailsScreen extends StatelessWidget {
                         onTap: () {
                           controller.goToPropertyDetails(data.slug!);
                         },
-                        child: Stack(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade200,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              width: MediaQuery.of(context).size.width / 2,
-                              height: 280.sp,
-                              child: Column(
-                                children: [
-                                  Stack(
-                                    children: [
-                                      data.coverPhoto != null
-                                          ? CoustomCachedImage(
-                                              imageurl: data.coverPhoto!,
-                                              height: 150.sp,
-                                              width: double.infinity)
-                                          : Container(
-                                              height: 150.sp,
-                                              decoration: BoxDecoration(
-                                                  color: Colors.grey.shade400,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          15.sp)),
-                                            ),
-                                      Positioned(
-                                        left: 110.sp,
-                                        top: 10.sp,
-                                        child: Container(
-                                          width: 50.sp,
-                                          height: 50.sp,
-                                          decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius:
-                                                  BorderRadius.circular(25)),
-                                          child: IconButton(
-                                            icon: Icon(Icons.favorite_border),
-                                            onPressed: () {},
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 10.sp,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: [
-                                            Container(
-                                              padding: const EdgeInsets.symmetric(
-                                                  horizontal: 10),
-                                              decoration: BoxDecoration(
-                                                  color: Colors.grey.shade100,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
-                                              child: data.title != null
-                                                  ? Text(
-                                                      data.title!,
-                                                      style: const TextStyle(
-                                                          color: AppColors
-                                                              .greencolor),
-                                                    )
-                                                  : const Text(""),
-                                            ),
-                                            Row(
-                                              children: [
-                                                Container(
-                                                  padding:const  EdgeInsets.symmetric(
-                                                      horizontal: 10),
-                                                  decoration: BoxDecoration(
-                                                      color:
-                                                          Colors.grey.shade100,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10)),
-                                                  child: const Row(
-                                                    children: [
-                                                      Icon(
-                                                        Icons.star,
-                                                        color: Colors.yellow,
-                                                      ),
-                                                      Text(
-                                                        "4.5",
-                                                        style: TextStyle(
-                                                            color: AppColors
-                                                                .greencolor),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            )
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 10.sp,
-                                        ),
-                                        Text(
-                                          data.location!.street!,
-                                          style:const  TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: "TejwalBold"),
-                                        ),
-                                        const SizedBox(
-                                          height: 2,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            const Icon(
-                                              Icons.location_history,
-                                              color: AppColors.greencolor,
-                                            ),
-                                            Text(
-                                              data.location!.city!,
-                                              style:const  TextStyle(
-                                                  color: AppColors.greencolor),
-                                            ),
-                                          ],
-                                        ),
-                                       const  SizedBox(
-                                          height: 10,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              "${data.price}",
-                                              style:const  TextStyle(
-                                                  color: AppColors.greencolor,
-                                                  fontFamily: "TejwalBold"),
-                                            ),
-                                            const Text(
-                                              "السعر النهائي:  ",
-                                              style: TextStyle(
-                                                  fontSize: 10,
-                                                  color: Colors.black,
-                                                  fontFamily: "Tejwal"),
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
+                        child:CoustomPropertyCard(
+                          cover: data.coverPhoto!,
+                          title: data.title == null ? "" : data.title!,
+                          street: data.location!.street == null
+                              ? ""
+                              : data.location!.street!,
+                          location: data.location!.city == null
+                              ? ""
+                              : data.location!.city!,
+                          price: " ${data.price}",
+                          isfav: true,
+                          onPressed: () {},
+                        )
                       );
                     }));
           },

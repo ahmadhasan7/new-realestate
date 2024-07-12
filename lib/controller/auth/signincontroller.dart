@@ -7,6 +7,7 @@ import '../../core/constanat/routing.dart';
 import '../../core/functions/handingdatacontroller.dart';
 import '../../core/services/services.dart';
 import '../../data/remote/auth/signin.dart';
+import '../personal_info_controller.dart';
 
 abstract class SignIncontroller extends GetxController{
   signin();
@@ -52,7 +53,7 @@ class SignInContollerImp extends SignIncontroller{
       Get.toNamed(AppRoute.homepage);
       myServices.pref.setString('token', response['token']);
       myServices.pref.setString("login","1");
-     // Get.toNamed(AppRoute.verifycodesignup,arguments: {'email':email.text}  );
+      Get.put(PersonalInfoController());
     }
     else{
       print(response);

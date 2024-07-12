@@ -10,14 +10,22 @@ import '../functions/checkinternet.dart';
 
 class Crud {
   Future<Either<StatusRequest, Map>> postData(
-      String linkurl, @required String Token, Map data) async {
+      {String? linkurl,@required String? Token, Map? data}) async {
     if (await checkInternet()) {
-      Map<String, String> header = {};
+      var response;
       if (Token != null) {
-        header.addAll({"Authorization": "Token ${Token}"});
+        response = await http.post(
+          Uri.parse(linkurl!),
+          body: data,
+          headers: {"Authorization": "Token $Token"},
+        );
+      } else {
+        response = await http.post(
+          Uri.parse(linkurl!),
+          body: data,
+        );
       }
-      var response =
-          await http.post(Uri.parse(linkurl), body: data, headers: header);
+
       print(response.statusCode);
       print(utf8.decode(response.bodyBytes));
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -117,7 +125,7 @@ Future<Either<StatusRequest, Map<String, dynamic>>> getDataAsMap(
   }
 
   if (await checkInternet()) {
-    var response = await http.get(Uri.parse(linkurl),);
+    var response = await http.get(Uri.parse(linkurl,), headers: header);
     print(response.body);
     print(response.statusCode);
 
@@ -134,7 +142,7 @@ Future<Either<StatusRequest, Map<String, dynamic>>> getDataAsMap(
     return const Left(StatusRequest.offlinefailure);
   }
 }
-Future<Either<StatusRequest, Map<String, dynamic>>> getData(
+Future<Either<StatusRequest, dynamic>> getData(
     String linkurl, @required String Token) async {
   Map<String, String> header = {};
   if (Token != null) {
@@ -149,8 +157,14 @@ Future<Either<StatusRequest, Map<String, dynamic>>> getData(
     if (response.statusCode == 200 || response.statusCode == 201) {
       var responsebody = jsonDecode(utf8.decode(response.bodyBytes));
       print(responsebody);
+      if(response is Map){
+        return Right(responsebody);
+      }
+      else if (response is List){return Right(responsebody);}
+      else{
+        return Right(responsebody);
+      }
 
-      return Right(responsebody);
     } else {
       return const Left(StatusRequest.serverfailure);
     }

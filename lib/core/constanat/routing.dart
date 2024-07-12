@@ -16,4 +16,10 @@ class AppRoute {
   static const String AddPropertyDetails = '/addpropertydetails';
 
   static const String AddCoustomerData = '/addcoustomerdata';
+  static const String personalinfo='/personalinfo';
+  static const String setting='/setting';
+  static const String aboutus='/aboutus';
+  static const String callwithus='/callwithus';
+  static const String userproperty='/userproperty';
+  static const String userpropertydetails='/userpropertydetails';
 }

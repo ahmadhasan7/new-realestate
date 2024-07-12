@@ -8,7 +8,7 @@ import 'package:realestate/core/constanat/routing.dart';
 import 'package:realestate/view/widget/propertydetails/coustomdatadetails.dart';
 import 'package:realestate/view/widget/propertydetails/coustomlabel.dart';
 import 'package:realestate/view/widget/propertydetails/imageviewer.dart';
-import '../../controller/propertydetailscontroller.dart';
+import '../../controller/details_controllers/propertydetailscontroller.dart';
 class PropertyDetailsScreen extends StatelessWidget {
   const PropertyDetailsScreen({super.key});
 

@@ -2,10 +2,10 @@ import 'package:get/get.dart';
 import 'package:realestate/core/constanat/routing.dart';
 import 'package:realestate/core/constanat/staticdata.dart';
 import 'package:realestate/data/remote/propertydata.dart';
-import '../core/class/stutusconntection.dart';
-import '../core/functions/handingdatacontroller.dart';
-import '../core/services/services.dart';
-import '../data/models/propertymodel.dart';
+import '../../core/class/stutusconntection.dart';
+import '../../core/functions/handingdatacontroller.dart';
+import '../../core/services/services.dart';
+import '../../data/models/propertymodel.dart';
 
 class DetailsController extends GetxController {
 
@@ -27,7 +27,7 @@ class DetailsController extends GetxController {
     statusRequest = StatusRequest.loading;
     update();
     var response = await propertyData.getPropertyData(
-        kind!, Staticdata.token);
+        kind!, Staticdata.token!);
     statusRequest = handlingData(response);
     update();
     print(statusRequest);

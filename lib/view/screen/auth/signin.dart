@@ -16,19 +16,11 @@ class SignIn extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(SignInContollerImp());
     return Scaffold(
-        appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            leading: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.arrow_back,
-                  color: Colors.black26,
-                ))),
+
         backgroundColor: Colors.grey.shade100,
         body: GetBuilder<SignInContollerImp>(
           builder: (contoller) {
-            return HandlingDataRequest(
+            return CoustomHandlingData(
                 statusRequest: contoller.statusRequest,
                 widget: ListView(
                   padding: EdgeInsets.all(14),

@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
-import '../core/class/stutusconntection.dart';
-import '../core/functions/handingdatacontroller.dart';
-import '../core/functions/urlluncher.dart';
-import '../core/services/services.dart';
-import '../data/models/get_one_property.dart';
-import '../data/remote/on_propery_data.dart';
+import '../../core/class/stutusconntection.dart';
+import '../../core/functions/handingdatacontroller.dart';
+import '../../core/functions/urlluncher.dart';
+import '../../core/services/services.dart';
+import '../../data/models/get_one_property.dart';
+import '../../data/remote/on_propery_data.dart';
 
 class PropertyDetailsController extends GetxController {
   OnePropertyData propertyData = OnePropertyData(Get.find());
