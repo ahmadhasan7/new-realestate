@@ -40,6 +40,37 @@ class Crud {
       return const Left(StatusRequest.offlinefailure);
     }
   }
+  Future<Either<StatusRequest, Map>> patchData(
+      {String? linkurl,@required String? Token, Map? data}) async {
+    if (await checkInternet()) {
+      var response;
+      if (Token != null) {
+        response = await http.patch(
+          Uri.parse(linkurl!),
+          body: data,
+          headers: {"Authorization": "Token $Token"},
+        );
+      } else {
+        response = await http.patch(
+          Uri.parse(linkurl!),
+          body: data,
+        );
+      }
+
+      print(response.statusCode);
+      print(utf8.decode(response.bodyBytes));
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        Map responsebody = jsonDecode(utf8.decode(response.bodyBytes));
+        print(responsebody);
+
+        return Right(responsebody);
+      } else {
+        return const Left(StatusRequest.serverfailure);
+      }
+    } else {
+      return const Left(StatusRequest.offlinefailure);
+    }
+  }
 
   Future<Either<StatusRequest, Map>> postRequestWithFile(
       String url, String Token, Map data, File file, String FileName) async {
@@ -143,7 +174,7 @@ Future<Either<StatusRequest, Map<String, dynamic>>> getDataAsMap(
   }
 }
 Future<Either<StatusRequest, dynamic>> getData(
-    String linkurl, @required String Token) async {
+    {required String linkurl,  String? Token}) async {
   Map<String, String> header = {};
   if (Token != null) {
     header.addAll({"Authorization": "Token ${Token}"});
@@ -157,13 +188,7 @@ Future<Either<StatusRequest, dynamic>> getData(
     if (response.statusCode == 200 || response.statusCode == 201) {
       var responsebody = jsonDecode(utf8.decode(response.bodyBytes));
       print(responsebody);
-      if(response is Map){
         return Right(responsebody);
-      }
-      else if (response is List){return Right(responsebody);}
-      else{
-        return Right(responsebody);
-      }
 
     } else {
       return const Left(StatusRequest.serverfailure);

@@ -53,7 +53,6 @@ class SignInContollerImp extends SignIncontroller{
       Get.toNamed(AppRoute.homepage);
       myServices.pref.setString('token', response['token']);
       myServices.pref.setString("login","1");
-      Get.put(PersonalInfoController());
     }
     else{
       print(response);

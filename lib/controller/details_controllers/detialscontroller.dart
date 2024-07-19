@@ -29,18 +29,18 @@ class DetailsController extends GetxController {
     var response = await propertyData.getPropertyData(
         kind!, Staticdata.token!);
     statusRequest = handlingData(response);
+    print("0000000000000000000000000000");
     update();
     print(statusRequest);
     if (statusRequest == StatusRequest.seccess) {
-      if (response is Map<String, dynamic> && response.containsKey('results')) {
-        List<dynamic> resultsList = response['results'];
         data =
-            (resultsList).map((item) => PropertyModel.fromJson(item)).toList();
-      }
+            (response as List).map((item) => PropertyModel.fromJson(item)).toList();
+        print(data);
+
       update();
     }
   }
   goToPropertyDetails(String slug){
-    Get.toNamed(AppRoute.propertdetailsscreen,arguments:slug );
+    Get.toNamed(AppRoute.propertdetailsscreen,arguments:slug);
   }
 }

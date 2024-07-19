@@ -13,7 +13,7 @@ class UserPropertyData {
   getPropertyData(String token) async {
     String link="${ApiLink.userproperty}";
     var response =
-    await crud.getData( link,"d8e80cb927b0fc9164e4bc0a71686a4054d41be5"
+    await crud.getData(linkurl:  link,Token: token
     );
     return response.fold((l) => l, (r) => r);
   }

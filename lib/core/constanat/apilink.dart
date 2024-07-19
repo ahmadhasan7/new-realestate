@@ -8,6 +8,7 @@ class ApiLink{
   static const String uplodeimages='${url}properties/upload-images';
   static const String pesonalinfo='${url}auth/profile/';
   static const String userproperty='${url}properties/user';
+  static const String editprofile='${url}auth/edit-profile/';
 
 
 

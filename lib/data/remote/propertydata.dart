@@ -14,7 +14,7 @@ class PropertyData {
       String property_type,String token) async {
     String link="${ApiLink.property}?property_type=${property_type}";
     var response =
-    await crud.getDataAsMap(linkurl: link,
+    await crud.getData(linkurl: link,
     );
     return response.fold((l) => l, (r) => r);
   }

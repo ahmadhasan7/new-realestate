@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:realestate/core/class/handlingrequstveiw.dart';
 import 'package:realestate/core/constanat/colors.dart';
-import 'package:realestate/core/constanat/routing.dart';
 import 'package:realestate/view/widget/propertydetails/coustomdatadetails.dart';
 import 'package:realestate/view/widget/propertydetails/coustomlabel.dart';
 import 'package:realestate/view/widget/propertydetails/imageviewer.dart';
@@ -14,17 +13,21 @@ class PropertyDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    PropertyDetailsController controller=Get.put(PropertyDetailsController());
+    PropertyDetailsController controller = Get.put(PropertyDetailsController());
     return Scaffold(
         bottomNavigationBar: Container(
           width: double.infinity,
           height: 45.sp,
           child: GestureDetector(
-            onTap: (){controller.callwithphone(controller.data!.phoneNumber!);},
+            onTap: () {
+              if (controller.data?.phoneNumber != null) {
+                controller.callwithphone(controller.data!.phoneNumber!);
+              }
+            },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const  Icon(
+                const Icon(
                   Icons.phone,
                   color: AppColors.greencolor,
                 ),
@@ -38,7 +41,7 @@ class PropertyDetailsScreen extends StatelessWidget {
         ),
         backgroundColor: Colors.grey.shade200,
         appBar: AppBar(
-          title:const  Text(
+          title: const Text(
             "تفاصيل العقار",
             style: TextStyle(
                 fontFamily: "TejwalBold", fontWeight: FontWeight.bold),
@@ -46,21 +49,23 @@ class PropertyDetailsScreen extends StatelessWidget {
           centerTitle: true,
         ),
         body: GetBuilder<PropertyDetailsController>(
-        builder: (controller){
-          return HandlingDataView(
-        statusRequest: controller.statusRequest,
-        widget: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                ImageViewer(
-                  imageUrls: controller.imageurl,
-                ),
-                SizedBox(
-                  height: 10.sp,
-                ),
+            builder: (controller) {
+              return controller.data==null?const Center(child: CircularProgressIndicator(),):HandlingDataView(
+                statusRequest: controller.statusRequest,
+                widget: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        controller.data == null
+                            ? Center(child: Text("No data available"))
+                            : ImageViewer(
+                          imageUrls: controller.imageurl,
+                        ),
+                        SizedBox(
+                          height: 10.sp,
+                        ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

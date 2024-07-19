@@ -38,6 +38,7 @@ class HandlingDataView extends StatelessWidget {
   }
 }
 
+
 class HandlingDataRequest extends StatelessWidget {
   final StatusRequest statusRequest;
   final Widget widget;

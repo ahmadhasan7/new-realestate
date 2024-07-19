@@ -16,7 +16,6 @@ class PropertyDetailsController extends GetxController {
 
   getdetailsforproperty() async {
     statusRequest = StatusRequest.loading;
-    print("00000000000000000000");
     update();
     var response = await propertyData.getPropertyData(
         slug!, myServices.pref!.getString('token')!);
@@ -35,16 +34,12 @@ class PropertyDetailsController extends GetxController {
         } else {
           imageurl = [];
         }
-      } else if (response is List) {
-        imageurl = response
-            .map((item) => item['image'])
-            .where((image) => image != null)
-            .cast<String>()
-            .toList();
       }
       print(data);
       print(imageurl);
       update();
+    } else {
+      data = null;
     }
     update();
   }
@@ -55,7 +50,6 @@ class PropertyDetailsController extends GetxController {
 
   @override
   void onInit() {
-    statusRequest = StatusRequest.loading;
     slug = Get.arguments;
     getdetailsforproperty();
     super.onInit();

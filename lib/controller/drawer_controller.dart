@@ -14,6 +14,6 @@ class MyDrawerController extends GetxController {
     Get.toNamed(AppRoute.personalinfo);
   }
   goToAboutUs(){
-    Get.toNamed(AppRoute.aboutus);
+    Get.toNamed(AppRoute.aboutus,);
   }
 }
