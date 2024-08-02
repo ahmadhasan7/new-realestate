@@ -11,16 +11,21 @@ class CoustomPropertyCard extends StatelessWidget {
   final String location;
   final String price;
   final bool isfav;
-  final void Function() onPressed;
+  final void Function() onFavPressed;
+  final void Function() onDeletePressed;
+  final void Function() onUpdatePressed;
 
   const CoustomPropertyCard(
       {super.key,
-      required this.cover,
-      required this.title,
-      required this.street,
-      required this.location,
-      required this.price,
-      required this.isfav, required this.onPressed});
+        required this.cover,
+        required this.title,
+        required this.street,
+        required this.location,
+        required this.price,
+        required this.isfav,
+        required this.onFavPressed,
+        required this.onDeletePressed,
+        required this.onUpdatePressed});
 
   @override
   Widget build(BuildContext context) {
@@ -35,34 +40,54 @@ class CoustomPropertyCard extends StatelessWidget {
         children: [
           Stack(
             children: [
-              cover != null
+              cover.isNotEmpty
                   ? CoustomCachedImage(
-                      imageurl: cover, height: 150.sp, width: double.infinity)
+                  imageurl: cover, height: 150.sp, width: double.infinity)
                   : Container(
-                      height: 150.sp,
-                      decoration: BoxDecoration(
-                          color: Colors.grey.shade400,
-                          borderRadius: BorderRadius.circular(15.sp)),
-                    ),
+                height: 150.sp,
+                decoration: BoxDecoration(
+                    color: Colors.grey.shade400,
+                    borderRadius: BorderRadius.circular(15.sp)),
+              ),
               Positioned(
-                  left: 110.sp,
-                  top: 10.sp,
-                  child: isfav
-                      ? Container(
-                          width: 50.sp,
-                          height: 50.sp,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(25)),
-                          child: IconButton(
-                            icon: Icon(Icons.favorite_border),
-                            onPressed: onPressed,
-                          ),
-                        )
-                      : IconButton(
-                        icon: Icon(Icons.menu),
-                        onPressed: onPressed,
-                      ))
+                left: 110.sp,
+                top: 10.sp,
+                child: isfav
+                    ? Container(
+                  width: 50.sp,
+                  height: 50.sp,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(25)),
+                  child: IconButton(
+                    icon: Icon(Icons.favorite_border),
+                    onPressed: onFavPressed,
+                  ),
+                )
+                    : PopupMenuButton<String>(
+                  icon: Icon(Icons.menu),
+                  onSelected: (String value) {
+                    switch (value) {
+                      case 'delete':
+                        onDeletePressed();
+                        break;
+                      case 'update':
+                        onUpdatePressed();
+                        break;
+                    }
+                  },
+                  itemBuilder: (BuildContext context) => [
+                    const PopupMenuItem<String>(
+                      value: 'delete',
+                      child: Text('حذف'),
+                    ),
+                   const PopupMenuItem<String>(
+                      value: 'update',
+                      child: Text('تعديل'),
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
           SizedBox(

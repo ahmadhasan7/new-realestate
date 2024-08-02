@@ -16,7 +16,6 @@ refrashPageData(data){
   print(data);
   print("00000000000000000000000000000000000");
   if(Get.currentRoute=='nameofroute'&&data['route']=="somthing"){
-    //we make get.gint  fr controller and we call methoud that make call with api
   }
 }
 notificationPermissinn()async{

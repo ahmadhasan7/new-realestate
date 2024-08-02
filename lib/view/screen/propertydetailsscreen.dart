@@ -10,7 +10,6 @@ import 'package:realestate/view/widget/propertydetails/imageviewer.dart';
 import '../../controller/details_controllers/propertydetailscontroller.dart';
 class PropertyDetailsScreen extends StatelessWidget {
   const PropertyDetailsScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     PropertyDetailsController controller = Get.put(PropertyDetailsController());

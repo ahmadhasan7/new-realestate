@@ -46,7 +46,7 @@ class VerifyCodeSignup extends StatelessWidget {
           OtpTextField(
             borderRadius: BorderRadius.circular(15),
             numberOfFields: 6,
-            borderColor: Color(0xFF512DA8),
+            borderColor:const Color(0xFF512DA8),
             showFieldAsBox: true,
             onCodeChanged: (String code) {},
             onSubmit: (String verificationCode) {

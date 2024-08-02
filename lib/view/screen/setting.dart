@@ -16,8 +16,7 @@ class SettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     SettingController settingController = Get.put(SettingController());
     return Scaffold(
-      body: Container(
-        child: ListView(
+      body: ListView(
           children: [
             Stack(
                 clipBehavior: Clip.none,
@@ -118,7 +117,7 @@ class SettingPage extends StatelessWidget {
             ),
           ],
         ),
-      ),
+
     );
   }
 }

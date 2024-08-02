@@ -9,6 +9,8 @@ class ApiLink{
   static const String pesonalinfo='${url}auth/profile/';
   static const String userproperty='${url}properties/user';
   static const String editprofile='${url}auth/edit-profile/';
+  static const String deleteproperty='${url}properties/';
+  static const String updateproperty='${url}properties/';
 
 
 

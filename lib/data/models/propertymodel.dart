@@ -30,7 +30,7 @@ class PropertyModel {
   String? furnishing;
   String? direction;
   int? totalRooms;
-  //String? rentType;
+  String? rentType;
   String? coverPhoto;
   bool? publishedStatus;
   int? views;
@@ -68,7 +68,7 @@ class PropertyModel {
         this.furnishing,
         this.direction,
         this.totalRooms,
-        //this.rentType,
+        this.rentType,
         this.coverPhoto,
         this.publishedStatus,
         this.views,
@@ -108,7 +108,7 @@ class PropertyModel {
     furnishing = json['furnishing'];
     direction = json['direction'];
     totalRooms = json['total_rooms'];
-    //rentType = json['rent_type'];
+    rentType==null?rentType='للبيع':rentType = json['rent_type'];
     coverPhoto = json['cover_photo'];
     publishedStatus = json['published_status'];
     views = json['views'];

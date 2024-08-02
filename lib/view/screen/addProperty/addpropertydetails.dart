@@ -50,14 +50,14 @@ class AddPropertyDetails extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CoustomRedioButton(
-                    val: "Foe Rent",
+                    val: "للأجار",
                     groupval: controller.stutus,
                     onchanged: (val) {
                       controller.changestutus(val);
                     }, title: 'اجار',
                   ),
                   CoustomRedioButton(
-                    val: "For Sale",
+                    val: "للبيع",
                     groupval: controller.stutus,
                     onchanged: (val) {
                       controller.changestutus(val);
@@ -110,6 +110,7 @@ class AddPropertyDetails extends StatelessWidget {
                     SizedBox(height: 14.sp,),
 
                     AddPropertyText(
+                      dataText: null,
                       nameofitem: 'اسم العقار',
                       isreq: true,
                       controller: controller.title,
@@ -122,6 +123,7 @@ class AddPropertyDetails extends StatelessWidget {
                     ),
                     controller.changeitems
                         ? AddPropertyText(
+                      dataText: null,
                             nameofitem: 'السعر',
                             isreq: true,
                             controller: controller.price,
@@ -131,6 +133,7 @@ class AddPropertyDetails extends StatelessWidget {
                       },
                           )
                         : AddPropertyText(
+                      dataText: null,
                             isnum: true,
                             nameofitem: 'الاجار',
                             isreq: true,
@@ -140,6 +143,7 @@ class AddPropertyDetails extends StatelessWidget {
                       },
                           ),
                     AddPropertyText(
+                      dataText: null,
                       isnum: true,
                       nameofitem: 'المساحة',
                       isreq: true,
@@ -173,6 +177,7 @@ class AddPropertyDetails extends StatelessWidget {
                       height: 10.sp,
                     ),
                     AddPropertyText(
+                      dataText: null,
                       isnum: true,
                       nameofitem: 'عدد الغرف',
                       isreq: true,
@@ -182,6 +187,7 @@ class AddPropertyDetails extends StatelessWidget {
                       },
                     ),
                     AddPropertyText(
+                      dataText: null,
                       isnum: true,
                       nameofitem: 'عدد غرف النوم',
                       isreq: true,
@@ -191,6 +197,7 @@ class AddPropertyDetails extends StatelessWidget {
                       },
                     ),
                     AddPropertyText(
+                      dataText: null,
                       isnum: true,
                       nameofitem: 'عدد غرف السكن',
                       isreq: true,
@@ -200,6 +207,7 @@ class AddPropertyDetails extends StatelessWidget {
                       },
                     ),
                     AddPropertyText(
+                      dataText: null,
                       isnum: true,
                       nameofitem: 'عدد المطابخ',
                       isreq: true,
@@ -209,6 +217,7 @@ class AddPropertyDetails extends StatelessWidget {
                       },
                     ),
                     AddPropertyText(
+                      dataText: null,
                       isnum: true,
                       nameofitem: 'عدد الحمامات',
                       isreq: true,
@@ -218,6 +227,7 @@ class AddPropertyDetails extends StatelessWidget {
                       },
                     ),
                     AddPropertyText(
+                      dataText: null,
                       isnum: true,
                       nameofitem: 'رقم العقار',
                       isreq: true,
@@ -295,6 +305,7 @@ class AddPropertyDetails extends StatelessWidget {
                     ),
                     SizedBox(height: 10.sp,),
                     AddPropertyText(
+                      dataText: null,
                       isnum: false,
                       nameofitem: 'الشارع ',
                       isreq: true,
@@ -304,6 +315,7 @@ class AddPropertyDetails extends StatelessWidget {
                       },
                     ),
                     AddPropertyText(
+                      dataText: null,
                       isnum: false,
                       nameofitem: 'المنطقة ',
                       isreq: true,

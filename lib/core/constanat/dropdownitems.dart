@@ -2,23 +2,23 @@ import '../../data/models/dropdownmodel.dart';
 
 class DropDownItems{
   List<DropDownModel> tybeOfProperty = [
-    DropDownModel(text: "شقة", value: "Apartment"),
-    DropDownModel(text: "فيلا", value: "Villa"),
-    DropDownModel(text: "أرض", value: "Land"),
-    DropDownModel(text: "مكتب", value: "Office"),
-    DropDownModel(text: "مزرعة", value: "Farm"),
-    DropDownModel(text: "محل تجاري", value: "Market"),
-    DropDownModel(text: "بناء", value: "Building"),
-    DropDownModel(text: "شاليه", value: "Chalet"),
-    DropDownModel(text: "بيت", value: "House"),
-    DropDownModel(text: "أخر", value: "Other"),
+    DropDownModel(text: "شقة", value: "شقة"),
+    DropDownModel(text: "فيلا", value: "فيلا"),
+    DropDownModel(text: "أرض", value: "أرض"),
+    DropDownModel(text: "مكتب", value: "مكتب"),
+    DropDownModel(text: "مزرعة", value: "مزرعة"),
+    DropDownModel(text: "محل تجاري", value: "تجاري"),
+    DropDownModel(text: "بناء", value: "بناء"),
+    DropDownModel(text: "شاليه", value: "شاليه"),
+    DropDownModel(text: "بيت", value: "بيت"),
+    DropDownModel(text: "اخر", value: "اخر"),
 
 
   ];
   List<DropDownModel> floor = [
-    DropDownModel(text: "قبو2", value: "1"),
-    DropDownModel(text: "قبو1", value: "2"),
-    DropDownModel(text: "الطابق الأرضي", value: "3"),
+    DropDownModel(text: "قبو2", value: "0"),
+    DropDownModel(text: "قبو1", value: "1"),
+    DropDownModel(text: "الطابق الأرضي", value: "2"),
     DropDownModel(text: "الطابق1", value: "4"),
     DropDownModel(text: "الطابق2", value: "5"),
     DropDownModel(text: "الطابق3", value: "6"),
@@ -26,11 +26,11 @@ class DropDownItems{
     DropDownModel(text: "الطابق5", value: "8"),
     DropDownModel(text: "الطابق6", value: "9"),
     DropDownModel(text: "الطابق7", value: "10"),
-    DropDownModel(text: "الطابق8", value: "الطابق8"),
-    DropDownModel(text: "الطابق9", value: "الطابق9"),
-    DropDownModel(text: "الطابق10", value: "الطابق10"),
-    DropDownModel(text: "الطابق11", value: "الطابق11"),
-    DropDownModel(text: "الطابق12", value: "الطابق12"),
+    DropDownModel(text: "الطابق8", value: "8"),
+    DropDownModel(text: "الطابق9", value: "9"),
+    DropDownModel(text: "الطابق10", value: "10"),
+    DropDownModel(text: "الطابق11", value: "11"),
+    DropDownModel(text: "الطابق12", value: "12"),
   ];
   List<DropDownModel> prpertyFounder = [
     DropDownModel(text: "طابو أخضر", value: "طابو أخضر"),

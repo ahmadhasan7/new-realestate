@@ -23,7 +23,7 @@ class SignIn extends StatelessWidget {
             return CoustomHandlingData(
                 statusRequest: contoller.statusRequest,
                 widget: ListView(
-                  padding: EdgeInsets.all(14),
+                  padding:const EdgeInsets.all(14),
                   children: [
                     Image.asset(
                       "Assets/images/CoustomLogo.PNG",
@@ -133,8 +133,8 @@ class SignIn extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.1,
                     ),
-                    Container(
-                      child: Column(
+
+                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -191,7 +191,7 @@ class SignIn extends StatelessWidget {
                           )
                         ],
                       ),
-                    )
+
                   ],
                 ));
           },

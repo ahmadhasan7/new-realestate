@@ -57,7 +57,7 @@ class MainPageScreen extends StatelessWidget {
                         Text(
                           "العقارات",
                           style: TextStyle(
-                              color: Color(0xff483d8b),
+                              color:const Color(0xff483d8b),
                               fontSize: 15.sp,
                               fontFamily: "TejwalBold"),
                         ),

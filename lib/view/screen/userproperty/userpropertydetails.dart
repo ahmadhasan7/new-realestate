@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
 
-import '../../../controller/user_property_details_controller.dart';
+import '../../../controller/userProprty/user_property_details_controller.dart';
 import '../../../core/constanat/colors.dart';
 import '../../widget/propertydetails/coustomdatadetails.dart';
 import '../../widget/propertydetails/coustomlabel.dart';
@@ -46,7 +46,7 @@ class UserPropertyScreen extends StatelessWidget {
                     width: 50.sp,
                     height: 20.sp,
                     child: Text(
-                      controller.data!.propertyStatus=='For Rent' ?"للإجار":"للبيع",
+                      controller.data!.propertyStatus=='للبيع' ?"للإجار":"للبيع",
                       textAlign: TextAlign.center,
                       style: const TextStyle(color: Colors.white),
                     ),

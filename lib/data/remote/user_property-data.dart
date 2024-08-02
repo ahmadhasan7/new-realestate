@@ -17,4 +17,12 @@ class UserPropertyData {
     );
     return response.fold((l) => l, (r) => r);
   }
+  deleteProperty(
+      String slug,String token) async {
+    var response =
+    await crud.deleteData(linkurl: '${ApiLink.deleteproperty}${slug}/',
+        Token: token
+    );
+    return response.fold((l) => l, (r) => r);
+  }
 }

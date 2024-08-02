@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "285257669493",
+    "project_id": "housetech-401d8",
+    "storage_bucket": "housetech-401d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:285257669493:android:653c2b870461630403113c",
+        "android_client_info": {
+          "package_name": "com.example.realestate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj2jJmVI-d5KLzdqu8eq57UT8RSc5g_Oc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

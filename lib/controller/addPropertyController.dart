@@ -14,7 +14,7 @@ import '../data/remote/propertyimage.dart';
 class AddPropertyController extends GetxController {
   List<File> selectedImages = [];
   File? imgFile;
-  String tybeOfPropertyselected = 'Apartment';
+  String tybeOfPropertyselected = 'شقة';
   String floorselected = '2';
   String prpertyFounderselected = 'طابو أخضر';
   String Ownertypeselected = 'مالك';
@@ -23,7 +23,7 @@ class AddPropertyController extends GetxController {
   String conditionselected = 'ممتاز';
   String locationselected = 'دمشق';
   String Rentalperiodselected = 'يومي';
-  String stutus = "For Sale";
+  String stutus = "للبيع";
   bool pool = false;
   bool solar_panels = false;
   bool elevator = false;
@@ -110,7 +110,7 @@ class AddPropertyController extends GetxController {
 
   void changestutus(String? val) {
     stutus = val!;
-    if (val == "بيع") {
+    if (val == "للبيع") {
       changeitems = true;
     } else {
       changeitems = false;

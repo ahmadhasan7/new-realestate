@@ -19,7 +19,7 @@ class DetailsScreen extends StatelessWidget {
     DetailsController detailsController = Get.put(DetailsController());
     return Scaffold(
 
-        backgroundColor: Color(0xF3F3F3E7),
+        backgroundColor:const Color(0xF3F3F3E7),
         appBar: AppBar(
           backgroundColor: Colors.white,
           title: const Text(
@@ -30,10 +30,10 @@ class DetailsScreen extends StatelessWidget {
             ),
           ),
           centerTitle: true,
-          iconTheme: IconThemeData(color: Colors.grey),
+          iconTheme:const IconThemeData(color: Colors.grey),
           actions: [
             IconButton(
-                onPressed: () {}, icon: Icon(Icons.notification_add_outlined))
+                onPressed: () {}, icon:const Icon(Icons.notification_add_outlined))
           ],
         ),
         body: GetBuilder<DetailsController>(
@@ -66,7 +66,7 @@ class DetailsScreen extends StatelessWidget {
                               : data.location!.city!,
                           price: " ${data.price}",
                           isfav: true,
-                          onPressed: () {},
+                           onFavPressed: () {  }, onDeletePressed: () {  }, onUpdatePressed: () { },
                         )
                       );
                     }));

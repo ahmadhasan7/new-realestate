@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
@@ -31,6 +32,7 @@ class HomePageControllerImp extends HomePageController {
   @override
   void onInit() {
     Get.put(PersonalInfoController());
+    FirebaseMessaging.instance.getToken().then((value) => print(value));
     fcmconfig();
     notificationPermissinn();
     super.onInit();

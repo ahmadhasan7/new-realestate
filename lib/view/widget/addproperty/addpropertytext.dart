@@ -11,6 +11,7 @@ class AddPropertyText extends StatelessWidget {
   final bool isreq;
   final String? Function(String?) valid;
   final TextEditingController controller;
+  final String? dataText;
 
   const AddPropertyText({
     super.key,
@@ -19,10 +20,12 @@ class AddPropertyText extends StatelessWidget {
     required this.controller,
     required this.isnum,
     required this.valid,
+    this.dataText,
   });
 
   @override
   Widget build(BuildContext context) {
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [

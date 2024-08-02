@@ -1,4 +1,5 @@
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:realestate/core/constanat/staticdata.dart';
@@ -53,6 +54,7 @@ class SignInContollerImp extends SignIncontroller{
       Get.toNamed(AppRoute.homepage);
       myServices.pref.setString('token', response['token']);
       myServices.pref.setString("login","1");
+      FirebaseMessaging.instance.subscribeToTopic("user");
     }
     else{
       print(response);

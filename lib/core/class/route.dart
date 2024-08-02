@@ -9,9 +9,9 @@ import 'package:realestate/view/screen/detailsscreen.dart';
 import 'package:realestate/view/screen/homepage.dart';
 import 'package:realestate/view/screen/personal_info_screen.dart';
 import 'package:realestate/view/screen/setting.dart';
+import 'package:realestate/view/screen/userproperty/update_user_proprty.dart';
 import 'package:realestate/view/screen/userproperty/userproperty.dart';
 
-import '../../controller/auth/verifycodesignupcontroller.dart';
 import '../../view/screen/addProperty/addcoustomerdata.dart';
 import '../../view/screen/addProperty/addpropertydetails.dart';
 import '../../view/screen/auth/forgetpassword/forgetpassword.dart';
@@ -57,6 +57,8 @@ class Routers {
     GetPage(name: AppRoute.userproperty, page: () => const UserProperty(
 
     )),
-    GetPage(name: AppRoute.userpropertydetails, page: ()=>const UserPropertyScreen())
+    GetPage(name: AppRoute.updateuserproprty, page: ()=>const UpdateUserProprty())
+
+    ,GetPage(name: AppRoute.userpropertydetails, page: ()=>const UserPropertyScreen())
   ];
 }

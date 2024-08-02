@@ -196,5 +196,35 @@ Future<Either<StatusRequest, dynamic>> getData(
   } else {
     return const Left(StatusRequest.offlinefailure);
   }
-}}
+}
+  Future<Either<StatusRequest, dynamic>> deleteData(
+      {required String linkurl,  String? Token}) async {
+    Map<String, String> header = {};
+    if (Token != null) {
+      header.addAll({"Authorization": "Token ${Token}"});
+    }
+
+    if (await checkInternet()) {
+      var response = await http.delete(Uri.parse(linkurl), headers: header);
+      print(response.statusCode);
+
+      if (response.statusCode == 200 || response.statusCode == 201|| response.statusCode == 204) {
+        if(response.body.isNotEmpty){
+
+          var responsebody = jsonDecode(utf8.decode(response.bodyBytes));
+          print(responsebody);
+          return Right(responsebody);
+        }
+        else{
+          return Right({});
+        }
+
+      } else {
+        return const Left(StatusRequest.serverfailure);
+      }
+    } else {
+      return const Left(StatusRequest.offlinefailure);
+    }
+  }
+}
 

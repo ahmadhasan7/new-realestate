@@ -11,20 +11,19 @@ class OnBordringScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(OnBordingControll());
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           children: [
-            const Expanded(
+             Expanded(
               child: CoustomSliderOnBordring(),
               flex: 3,
             ),
             Expanded(
               flex: 1,
               child: SingleChildScrollView(
-                child:  Container(
-                  child: const Column(
+                child: Column(
                     children: [
                        CoustomDotet(),
                        SizedBox(height: 20), // Adjusted the SizedBox height
@@ -33,7 +32,7 @@ class OnBordringScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+
           ],
         ),
       ),

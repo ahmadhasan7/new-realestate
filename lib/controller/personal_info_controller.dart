@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:realestate/core/class/stutusconntection.dart';
 import 'package:realestate/data/models/personal_info_model.dart';
 import 'package:realestate/data/remote/personal_info_data.dart';
-
 import '../core/functions/handingdatacontroller.dart';
 import '../core/services/services.dart';
 import '../data/remote/edit_profile_data.dart';
@@ -49,7 +48,7 @@ class PersonalInfoController extends GetxController {
 
   updateData(String key, String value) async {
 
-    Get.snackbar("جاري تعديل طلبك", "سيتم ابلغك عند الانتهاء");
+    Get.snackbar("جاري تعديل طلبك", "سيتم ابلاغك عند الانتهاء");
     update();
     var response = await editProfileData.PatchProfiledata(
         key, value, myServices.pref!.getString('token')!);
@@ -69,15 +68,18 @@ class PersonalInfoController extends GetxController {
         case 'about_me':
           data!.aboutMe = value;
           break;
+        case 'city':
+          data!.city = value;
+          break;
       }
       update();
     }
     else{
       Get.snackbar("خطأ", "حدث خطأ غير متوقع اعد المحاولة لاحقاً");
       update();
-
     }
   }
+
 
   @override
   void onInit() {

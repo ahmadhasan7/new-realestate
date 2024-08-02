@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:realestate/controller/user_property_controller.dart';
+import 'package:realestate/controller/userProprty/user_property_controller.dart';
 import '../../../core/class/handlingrequstveiw.dart';
 import '../../../core/constanat/colors.dart';
 import '../../../data/models/propertymodel.dart';
@@ -37,7 +37,7 @@ class UserProperty extends StatelessWidget {
           return HandlingDataView(
             statusRequest: controller.statusRequest,
             widget: controller.data.isEmpty
-                ? Center(child: Text("No properties found"))
+                ? const Center(child: Text("لا يوجد عقارات لعرضها"))
                 : GridView.builder(
               padding: const EdgeInsets.all(10),
               itemCount: controller.data.length,
@@ -59,8 +59,11 @@ class UserProperty extends StatelessWidget {
                     street: data.location?.street ?? "",
                     location: data.location?.city ?? "",
                     price: " ${data.price}",
-                    isfav: false,
-                    onPressed: () {},
+                    isfav: false, onFavPressed: () {  }, onDeletePressed: () {
+                      controller.deleteProperty(data.slug!,index);
+                  }, onUpdatePressed: () {
+                      controller.goToUpdateScreen(data);
+                  },
                   ),
                 );
               },

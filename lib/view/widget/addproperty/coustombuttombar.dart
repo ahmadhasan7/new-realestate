@@ -25,15 +25,15 @@ class CoustomButtomBar extends StatelessWidget {
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
             onPressed: onPressedremove,
-            child: Text(
+            child:const Text(
               "إلغاء",
               style: TextStyle(color: Colors.white),
             ),
           ),
           ElevatedButton(
             onPressed: onPressednext,
-            child: Text(
-              "التالي",
+            child:const Text(
+              "تأكيد",
               style: TextStyle(color: Colors.black),
             ),
             style: ElevatedButton.styleFrom(backgroundColor: Colors.white),

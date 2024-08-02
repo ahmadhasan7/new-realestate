@@ -101,3 +101,41 @@ class CoustomHandlingData extends StatelessWidget {
         : widget;
   }
 }
+class CoustomDotedHandlingData extends StatelessWidget {
+  final StatusRequest statusRequest;
+  final Widget widget;
+  const CoustomDotedHandlingData(
+      {Key? key, required this.statusRequest, required this.widget})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return statusRequest == StatusRequest.loading
+        ?Stack(
+        children:[widget,
+          Stack(
+            children: [
+              BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                child: Container(
+                  color: Colors.black.withOpacity(0.2),
+                ),
+              ),
+              Center(
+                  child:Lottie.asset(AppImage.dotedlottie,width: 250, height: 250, repeat: true)),
+
+            ]
+                ),
+
+        ] )
+        : statusRequest == StatusRequest.offlinefailure
+        ? Center(
+        child: Lottie.asset(AppImage.offlineimage,
+            width: 250, height: 250))
+        : statusRequest == StatusRequest.serverfailure
+        ? Center(
+        child: Lottie.asset(AppImage.serverfalureimage,
+            width: 250, height: 250))
+        : widget;
+  }
+}

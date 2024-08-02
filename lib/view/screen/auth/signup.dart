@@ -67,7 +67,7 @@ class SignUp extends StatelessWidget {
                     validInput("username", 10, 10, val!);
                   },
                   isNumber: false,
-                  icons: Icon(Icons.person),
+                  icons:const Icon(Icons.person),
                 ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.01,
@@ -92,7 +92,7 @@ class SignUp extends StatelessWidget {
                   validInput("email", 10, 10, val!);
                 },
                 isNumber: false,
-                icons: Icon(Icons.email),
+                icons:const Icon(Icons.email),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.01,
@@ -103,7 +103,7 @@ class SignUp extends StatelessWidget {
                         validInput("phone", 10, 10, val!);
                       },
                       isNumber: true,
-                      icons: Icon(Icons.phone),
+                      icons:const Icon(Icons.phone),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.01,
@@ -115,7 +115,7 @@ class SignUp extends StatelessWidget {
                         validInput("password", 10, 10, val!);
                       },
                       isNumber: false,
-                      icons: Icon(Icons.password),
+                      icons:const Icon(Icons.password),
                     ),
                     const SizedBox(
                       height: 10,
@@ -125,8 +125,7 @@ class SignUp extends StatelessWidget {
                     ),
                 CoustomButtom(title: "إنشاء الحساب", onpress: (){contoller.signUp();}),
                 SizedBox(height: MediaQuery.of(context).size.height*0.01,),
-                Container(
-                  child: Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -183,7 +182,7 @@ class SignUp extends StatelessWidget {
                       )
                     ],
                   ),
-                )
+
                   ],
                 ),
 

@@ -28,7 +28,7 @@ class PersonalInfoScreen extends StatelessWidget {
       body:GetBuilder<PersonalInfoController>(builder: (controller){
         return  Form(
           key: controller.key,
-          child: SingleChildScrollView(
+          child: controller.data==null?const Center(child: Text("الرجاء الانتظار قليلا")):SingleChildScrollView(
             child: Column(
               children: [
                 CoustomListTile(

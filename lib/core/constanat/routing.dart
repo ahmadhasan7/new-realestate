@@ -22,4 +22,5 @@ class AppRoute {
   static const String callwithus='/callwithus';
   static const String userproperty='/userproperty';
   static const String userpropertydetails='/userpropertydetails';
+  static const String updateuserproprty='/updateuserprorty';
 }
