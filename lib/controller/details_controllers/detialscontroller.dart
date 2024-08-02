@@ -24,18 +24,23 @@ class DetailsController extends GetxController {
   }
 
   initialData() async {
+    data.clear();
     statusRequest = StatusRequest.loading;
     update();
     var response = await propertyData.getPropertyData(
-        kind!, Staticdata.token!);
+        kind!,myServices.pref.getString('token')!);
     statusRequest = handlingData(response);
-    print("0000000000000000000000000000");
+    print(myServices.pref.getString('token')!);
+
     update();
     print(statusRequest);
     if (statusRequest == StatusRequest.seccess) {
+      print("000000000000000000000000000000000000000");
+      print(response[0]["is_favorite"]);
+      print(response[1]["is_favorite"]);
+      print("000000000000000000000000000000000000000");
         data =
             (response as List).map((item) => PropertyModel.fromJson(item)).toList();
-        print(data);
 
       update();
     }

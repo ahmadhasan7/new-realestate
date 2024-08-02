@@ -1,11 +1,11 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:realestate/controller/favorite_controller.dart';
 import 'package:realestate/core/class/handlingrequstveiw.dart';
 import 'package:realestate/core/constanat/colors.dart';
 import 'package:realestate/data/models/propertymodel.dart';
-import 'package:realestate/data/static/onbordring.dart';
-import 'package:realestate/view/widget/coustomimage.dart';
 
 import '../../controller/details_controllers/detialscontroller.dart';
 import '../widget/property_card.dart';
@@ -17,8 +17,8 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DetailsController detailsController = Get.put(DetailsController());
+   final favcontroller= Get.put(FavoriteController());
     return Scaffold(
-
         backgroundColor:const Color(0xF3F3F3E7),
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -51,24 +51,41 @@ class DetailsScreen extends StatelessWidget {
                             crossAxisSpacing: 11),
                     itemBuilder: (context, index) {
                       PropertyModel data = controller.data[index];
-                      return InkWell(
-                        onTap: () {
-                          controller.goToPropertyDetails(data.slug!);
-                        },
-                        child:CoustomPropertyCard(
-                          cover: data.coverPhoto!,
-                          title: data.title == null ? "" : data.title!,
-                          street: data.location!.street == null
-                              ? ""
-                              : data.location!.street!,
-                          location: data.location!.city == null
-                              ? ""
-                              : data.location!.city!,
-                          price: " ${data.price}",
-                          isfav: true,
-                           onFavPressed: () {  }, onDeletePressed: () {  }, onUpdatePressed: () { },
-                        )
-                      );
+                      favcontroller.setFavarie(data!.id!, data!.isFavorite!);
+                      return GetBuilder<FavoriteController>(builder: (controller){return InkWell(
+                          onTap: () {
+                            detailsController.goToPropertyDetails(data.slug!);
+                          },
+                          child:CoustomPropertyCard(
+                            isuserproperty:false,
+                            cover: data.coverPhoto!,
+                            title: data.title == null ? "" : data.title!,
+                            street: data.location!.street == null
+                                ? ""
+                                : data.location!.street!,
+                            location: data.location!.city == null
+                                ? ""
+                                : data.location!.city!,
+                            price: " ${data.price}",
+                            isfav: favcontroller.isfavorite[data.id],
+                            onFavPressed: () {
+                              print( favcontroller.isfavorite[data.id]);
+                              if(favcontroller.isfavorite[data.id]==true){
+                                favcontroller.setFavarie(data.id!, false);
+                                controller.deleteFromFav(data.id!);
+                                print( favcontroller.isfavorite[data.id]);
+
+                              }
+                              else{
+                                favcontroller.setFavarie(data.id!, true);
+                                controller.addToFav(data.id!);
+                                print( favcontroller.isfavorite[data.id]);
+
+
+                              }
+                            }, onDeletePressed: () {  }, onUpdatePressed: () { },
+                          )
+                      );});
                     }));
           },
         ));

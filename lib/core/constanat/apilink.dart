@@ -11,6 +11,9 @@ class ApiLink{
   static const String editprofile='${url}auth/edit-profile/';
   static const String deleteproperty='${url}properties/';
   static const String updateproperty='${url}properties/';
+  static const String addtofav='${url}properties/user/favorites/';
+  static const String deletefromfav='${url}properties/user/favorites/delete/';
+
 
 
 

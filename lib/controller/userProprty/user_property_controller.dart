@@ -10,7 +10,6 @@ import '../../data/models/propertymodel.dart';
 class UserPropertyController extends GetxController {
   UserPropertyData userPropertyData = UserPropertyData(Get.find());
   MyServices myServices = Get.find();
-
   List<PropertyModel> data = [];
   late StatusRequest statusRequest;
 

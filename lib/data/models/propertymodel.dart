@@ -5,6 +5,7 @@ class PropertyModel {
   String? createdAt;
   String? updatedAt;
   String? profilePhoto;
+  String? ownershipType;
   String? phoneNumber;
   String? title;
   String? slug;
@@ -22,7 +23,6 @@ class PropertyModel {
   int? livingRooms;
   String? propertyStatus;
   String? propertyType;
-  String? ownershipType;
   String? covering;
   bool? elevator;
   bool? pool;
@@ -34,6 +34,8 @@ class PropertyModel {
   String? coverPhoto;
   bool? publishedStatus;
   int? views;
+  bool? isFavorite;
+  bool? isOwner;
   List<Images>? images;
 
   PropertyModel(
@@ -60,7 +62,6 @@ class PropertyModel {
         this.livingRooms,
         this.propertyStatus,
         this.propertyType,
-        this.ownershipType,
         this.covering,
         this.elevator,
         this.pool,
@@ -72,6 +73,8 @@ class PropertyModel {
         this.coverPhoto,
         this.publishedStatus,
         this.views,
+        this.isFavorite,
+        this.isOwner,
         this.images});
 
   PropertyModel.fromJson(Map<String, dynamic> json) {
@@ -100,7 +103,6 @@ class PropertyModel {
     livingRooms = json['living_rooms'];
     propertyStatus = json['property_status'];
     propertyType = json['property_type'];
-    ownershipType = json['ownership_type'];
     covering = json['covering'];
     elevator = json['elevator'];
     pool = json['pool'];
@@ -108,10 +110,12 @@ class PropertyModel {
     furnishing = json['furnishing'];
     direction = json['direction'];
     totalRooms = json['total_rooms'];
-    rentType==null?rentType='للبيع':rentType = json['rent_type'];
+    rentType = json['rent_type'];
     coverPhoto = json['cover_photo'];
     publishedStatus = json['published_status'];
     views = json['views'];
+    isFavorite = json['is_favorite'];
+    isOwner = json['is_owner'];
     if (json['images'] != null) {
       images = <Images>[];
       json['images'].forEach((v) {
@@ -137,6 +141,7 @@ class PropertyModel {
       data['location'] = this.location!.toJson();
     }
     data['property_number'] = this.propertyNumber;
+    data['ownership_type'] = this.ownershipType;
     data['price'] = this.price;
     data['plot_area'] = this.plotArea;
     data['total_floors'] = this.totalFloors;
@@ -147,7 +152,6 @@ class PropertyModel {
     data['living_rooms'] = this.livingRooms;
     data['property_status'] = this.propertyStatus;
     data['property_type'] = this.propertyType;
-    data['ownership_type'] = this.ownershipType;
     data['covering'] = this.covering;
     data['elevator'] = this.elevator;
     data['pool'] = this.pool;
@@ -155,10 +159,12 @@ class PropertyModel {
     data['furnishing'] = this.furnishing;
     data['direction'] = this.direction;
     data['total_rooms'] = this.totalRooms;
-   // data['rent_type'] = this.rentType;
+    data['rent_type'] = this.rentType;
     data['cover_photo'] = this.coverPhoto;
     data['published_status'] = this.publishedStatus;
     data['views'] = this.views;
+    data['is_favorite'] = this.isFavorite;
+    data['is_owner'] = this.isOwner;
     if (this.images != null) {
       data['images'] = this.images!.map((v) => v.toJson()).toList();
     }

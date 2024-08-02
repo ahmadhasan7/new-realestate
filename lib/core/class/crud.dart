@@ -198,16 +198,15 @@ Future<Either<StatusRequest, dynamic>> getData(
   }
 }
   Future<Either<StatusRequest, dynamic>> deleteData(
-      {required String linkurl,  String? Token}) async {
+      {required String linkurl,  String? Token, Map? data}) async {
     Map<String, String> header = {};
     if (Token != null) {
       header.addAll({"Authorization": "Token ${Token}"});
     }
 
     if (await checkInternet()) {
-      var response = await http.delete(Uri.parse(linkurl), headers: header);
+      var response = await http.delete(Uri.parse(linkurl), headers: header,body: data);
       print(response.statusCode);
-
       if (response.statusCode == 200 || response.statusCode == 201|| response.statusCode == 204) {
         if(response.body.isNotEmpty){
 

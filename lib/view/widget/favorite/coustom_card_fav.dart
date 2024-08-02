@@ -1,36 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/constanat/colors.dart';
-import 'coustomimage.dart';
+import '../../../core/constanat/colors.dart';
+import '../coustomimage.dart';
 
-class CoustomPropertyCard extends StatelessWidget {
+class CoustomFavoriteCard extends StatelessWidget {
   final String cover;
   final String title;
   final String street;
   final String location;
   final String price;
-  final bool isfav;
-  final bool isuserproperty;
-  final void Function() onFavPressed;
   final void Function() onDeletePressed;
-  final void Function() onUpdatePressed;
 
-  const CoustomPropertyCard(
-      {super.key,
-        required this.cover,
-        required this.title,
-        required this.street,
-        required this.location,
-        required this.price,
-        required this.isfav,
-        required this.onFavPressed,
-        required this.onDeletePressed,
-        required this.onUpdatePressed, required this.isuserproperty});
+  const CoustomFavoriteCard({
+    super.key,
+    required this.cover,
+    required this.title,
+    required this.street,
+    required this.location,
+    required this.price,
+    required this.onDeletePressed,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(bottom: 10.h ),
       decoration: BoxDecoration(
         color: Colors.grey.shade200,
         borderRadius: BorderRadius.circular(15),
@@ -53,41 +48,17 @@ class CoustomPropertyCard extends StatelessWidget {
               Positioned(
                 left: 110.sp,
                 top: 10.sp,
-                child:!isuserproperty
-                    ? Container(
+                child:Container(
                   width: 50.sp,
                   height: 50.sp,
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(25)),
                   child: IconButton(
-                    icon: isfav?Icon(Icons.favorite,color: Colors.red,):Icon(Icons.favorite_border,color: Colors.red,),
-                    onPressed: onFavPressed,
+                    icon: Icon(Icons.delete_outline,color: Colors.red,), onPressed: onDeletePressed,
                   ),
                 )
-                    : PopupMenuButton<String>(
-                  icon: Icon(Icons.menu),
-                  onSelected: (String value) {
-                    switch (value) {
-                      case 'delete':
-                        onDeletePressed();
-                        break;
-                      case 'update':
-                        onUpdatePressed();
-                        break;
-                    }
-                  },
-                  itemBuilder: (BuildContext context) => [
-                    const PopupMenuItem<String>(
-                      value: 'delete',
-                      child: Text('حذف'),
-                    ),
-                   const PopupMenuItem<String>(
-                      value: 'update',
-                      child: Text('تعديل'),
-                    ),
-                  ],
-                ),
+
               )
             ],
           ),
