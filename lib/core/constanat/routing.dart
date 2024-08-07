@@ -23,4 +23,7 @@ class AppRoute {
   static const String userproperty='/userproperty';
   static const String userpropertydetails='/userpropertydetails';
   static const String updateuserproprty='/updateuserprorty';
+  static const String coustomizesearsh='/coustomizesearsh';
+  static const String spicealsearch='/spicialsearch';
+  static const String favorite='/favorite';
 }

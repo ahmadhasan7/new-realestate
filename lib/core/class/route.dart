@@ -5,10 +5,13 @@ import 'package:realestate/core/constanat/routing.dart';
 import 'package:realestate/core/middleware/mymiddleware.dart';
 import 'package:realestate/data/models/personal_info_model.dart';
 import 'package:realestate/view/screen/about_us.dart';
+import 'package:realestate/view/screen/coustomize_search.dart';
 import 'package:realestate/view/screen/detailsscreen.dart';
+import 'package:realestate/view/screen/favorite_screen.dart';
 import 'package:realestate/view/screen/homepage.dart';
 import 'package:realestate/view/screen/personal_info_screen.dart';
 import 'package:realestate/view/screen/setting.dart';
+import 'package:realestate/view/screen/spesial_search_screen.dart';
 import 'package:realestate/view/screen/userproperty/update_user_proprty.dart';
 import 'package:realestate/view/screen/userproperty/userproperty.dart';
 
@@ -26,10 +29,10 @@ import '../../view/screen/userproperty/userpropertydetails.dart';
 
 class Routers {
   List<GetPage<dynamic>>? routers = [
-    GetPage(
-        name:'/',
-        page: () => const OnBordringScreen(),
-        middlewares: [MyMiddleWare()]),
+     GetPage(
+         name:'/',
+         page: () => const OnBordringScreen(),
+         middlewares: [MyMiddleWare()]),
     GetPage(name: AppRoute.homepage, page: () => const HomePage()),
     GetPage(name: AppRoute.detailsscreeen, page: () => const DetailsScreen()),
     GetPage(name: AppRoute.signin, page: () => const SignIn()),
@@ -60,5 +63,10 @@ class Routers {
     GetPage(name: AppRoute.updateuserproprty, page: ()=>const UpdateUserProprty())
 
     ,GetPage(name: AppRoute.userpropertydetails, page: ()=>const UserPropertyScreen())
+    ,GetPage(name: AppRoute.coustomizesearsh, page: ()=>const CoustomizeSearch()),
+    GetPage(name: AppRoute.spicealsearch, page: ()=>const SpicialSearchScreen()),
+    GetPage(name: AppRoute.favorite, page: ()=>const FavoriteScreen()),
+    GetPage(name: AppRoute.coustomizesearsh, page: ()=>const CoustomizeSearch())
+
   ];
 }

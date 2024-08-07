@@ -12,6 +12,8 @@ class CoustomPropertyCard extends StatelessWidget {
   final String price;
   final bool isfav;
   final bool isuserproperty;
+  final String istrad;
+  final String ownertybe;
   final void Function() onFavPressed;
   final void Function() onDeletePressed;
   final void Function() onUpdatePressed;
@@ -26,12 +28,17 @@ class CoustomPropertyCard extends StatelessWidget {
         required this.isfav,
         required this.onFavPressed,
         required this.onDeletePressed,
-        required this.onUpdatePressed, required this.isuserproperty});
+        required this.onUpdatePressed, required this.isuserproperty, required this.istrad, required this.ownertybe});
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      //padding: EdgeInsets.all(10.s[]),
+      margin:EdgeInsets.all(10.w),
       decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(color: Colors.grey,offset: Offset(0.1,0.5),spreadRadius: 1,blurRadius: 10)
+        ],
         color: Colors.grey.shade200,
         borderRadius: BorderRadius.circular(15),
       ),
@@ -51,20 +58,13 @@ class CoustomPropertyCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15.sp)),
               ),
               Positioned(
-                left: 110.sp,
+                left: 280.w,
                 top: 10.sp,
                 child:!isuserproperty
-                    ? Container(
-                  width: 50.sp,
-                  height: 50.sp,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(25)),
-                  child: IconButton(
-                    icon: isfav?Icon(Icons.favorite,color: Colors.red,):Icon(Icons.favorite_border,color: Colors.red,),
-                    onPressed: onFavPressed,
-                  ),
-                )
+                    ? IconButton(
+                      icon: isfav?Icon(Icons.favorite,color: Colors.red,):Icon(Icons.favorite_border,color: Colors.red,),
+                      onPressed: onFavPressed,
+                    )
                     : PopupMenuButton<String>(
                   icon: Icon(Icons.menu),
                   onSelected: (String value) {
@@ -97,19 +97,12 @@ class CoustomPropertyCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        decoration: BoxDecoration(
-                            color: Colors.grey.shade100,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Text(
-                          title,
-                          style: const TextStyle(color: AppColors.greencolor),
-                        )),
+
                     Row(
                       children: [
                         Container(
@@ -131,56 +124,80 @@ class CoustomPropertyCard extends StatelessWidget {
                           ),
                         )
                       ],
-                    )
+                    ),
+                    Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade100,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Text(
+                          title,
+                          style: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
+                        )),
                   ],
                 ),
                 SizedBox(
                   height: 10.sp,
                 ),
-                Text(
-                  street,
-                  style: const TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: "TejwalBold"),
-                ),
-                const SizedBox(
-                  height: 2,
-                ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    const Icon(
-                      Icons.location_history,
-                      color: AppColors.greencolor,
-                    ),
                     Text(
-                      location,
-                      style: const TextStyle(color: AppColors.greencolor),
+                      street,
+                      style: const TextStyle(
+                        fontSize: 18,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "TejwalBold"),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.location_history,
+                          color: AppColors.greencolor,
+                        ),
+                        Text(
+                          location,
+                          style: const TextStyle(color: AppColors.greencolor),
+                        ),
+                      ],
                     ),
                   ],
                 ),
+
+
+
                 const SizedBox(
                   height: 10,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text(
-                      price,
-                      style: const TextStyle(
-                          color: AppColors.greencolor,
-                          fontFamily: "TejwalBold"),
+                    Text(ownertybe),
+                    Text(istrad,style: TextStyle(color: Colors.green),),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          price,
+                          style: const TextStyle(
+                              color: AppColors.greencolor,
+                              fontFamily: "TejwalBold"),
+                        ),
+                        const Text(
+                          "السعر النهائي:  ",
+                          style: TextStyle(
+                              fontSize: 10,
+                              color: Colors.black,
+                              fontFamily: "Tejwal"),
+                        ),
+                      ],
                     ),
-                    const Text(
-                      "السعر النهائي:  ",
-                      style: TextStyle(
-                          fontSize: 10,
-                          color: Colors.black,
-                          fontFamily: "Tejwal"),
-                    ),
+
                   ],
                 )
+              
               ],
             ),
           )

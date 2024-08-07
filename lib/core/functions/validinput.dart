@@ -23,11 +23,11 @@ validInput(String val, int min, int max, String type) {
   }
 
   if (val.length < min) {
-    return "can't be less than $min";
+    return "مدخل غير صالح";
   }
 
   if (val.length > max) {
-    return "can't be larger than $max";
+    return "مدخل غير صالح";
   }
   return null;
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:realestate/controller/userProprty/user_property_controller.dart';
+import 'package:realestate/view/widget/coustom_card_handling.dart';
 import '../../../core/class/handlingrequstveiw.dart';
 import '../../../core/constanat/colors.dart';
 import '../../../data/models/propertymodel.dart';
@@ -34,19 +35,14 @@ class UserProperty extends StatelessWidget {
       ),
       body: GetBuilder<UserPropertyController>(
         builder: (controller) {
-          return HandlingDataView(
+          return HandlingDataViewShimmer(
+            shimmerwidget:const  CoustomCardHandling(),
             statusRequest: controller.statusRequest,
             widget: controller.data.isEmpty
                 ? const Center(child: Text("لا يوجد عقارات لعرضها"))
-                : GridView.builder(
+                : ListView.builder(
               padding: const EdgeInsets.all(10),
               itemCount: controller.data.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.53,
-                mainAxisSpacing: 0.5,
-                crossAxisSpacing: 11,
-              ),
               itemBuilder: (context, index) {
                 PropertyModel data = controller.data[index];
                 return InkWell(
@@ -63,7 +59,7 @@ class UserProperty extends StatelessWidget {
                       controller.deleteProperty(data.slug!,index);
                   }, onUpdatePressed: () {
                       controller.goToUpdateScreen(data);
-                  }, isuserproperty: true,
+                  }, isuserproperty: true, istrad: '', ownertybe: '',
                   ),
                 );
               },

@@ -8,6 +8,7 @@ import 'package:realestate/view/widget/propertydetails/coustomdatadetails.dart';
 import 'package:realestate/view/widget/propertydetails/coustomlabel.dart';
 import 'package:realestate/view/widget/propertydetails/imageviewer.dart';
 import '../../controller/details_controllers/propertydetailscontroller.dart';
+import '../widget/propertydetails/coustom_handling_data_property.dart';
 class PropertyDetailsScreen extends StatelessWidget {
   const PropertyDetailsScreen({super.key});
   @override
@@ -49,9 +50,10 @@ class PropertyDetailsScreen extends StatelessWidget {
         ),
         body: GetBuilder<PropertyDetailsController>(
             builder: (controller) {
-              return controller.data==null?const Center(child: CircularProgressIndicator(),):HandlingDataView(
+              return HandlingDataViewShimmer(
+                shimmerwidget:CoustomhandlingDataPropertyDetails(),
                 statusRequest: controller.statusRequest,
-                widget: Padding(
+                widget:controller.data==null?CoustomhandlingDataPropertyDetails():Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: SingleChildScrollView(
                     child: Column(

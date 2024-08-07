@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:realestate/core/constanat/colors.dart';
+import 'package:realestate/core/constanat/routing.dart';
 import 'package:realestate/data/static/categorydata.dart';
 import 'package:realestate/view/widget/mainpage/coustomcategory.dart';
 import 'package:realestate/view/widget/mainpage/coustomphoto.dart';
@@ -31,12 +32,16 @@ class MainPageScreen extends StatelessWidget {
           ),
           actions: [
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(AppRoute.favorite);
+                },
                 icon: const Icon(
                   Icons.favorite_border,
                 )),
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  controller.goToCoustomizeScreen();
+                },
                 icon: const Icon(
                   Icons.notification_add_outlined,
                 ))

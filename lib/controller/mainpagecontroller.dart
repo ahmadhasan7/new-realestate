@@ -15,4 +15,7 @@ class MainScreenController extends GetxController{
 
     Get.toNamed(AppRoute.detailsscreeen,arguments: tybe);
   }
+  goToCoustomizeScreen(){
+    Get.toNamed(AppRoute.coustomizesearsh);
+  }
 }
