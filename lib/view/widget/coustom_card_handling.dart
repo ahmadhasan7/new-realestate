@@ -5,15 +5,9 @@ class CoustomCardHandling extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-        padding: EdgeInsets.all(10),
+    return ListView.builder(
+        padding:const  EdgeInsets.all(10),
         itemCount: 4,
-        gridDelegate:
-        const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 0.53,
-            mainAxisSpacing: 0.5,
-            crossAxisSpacing: 11),
         itemBuilder: (context, index) {
           return CoustomPropertyCard(
               isuserproperty: false,

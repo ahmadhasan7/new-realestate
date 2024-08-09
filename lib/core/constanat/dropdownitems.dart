@@ -16,6 +16,7 @@ class DropDownItems{
 
   ];
   List<DropDownModel> floor = [
+    DropDownModel(text: "اختر", value: ""),
     DropDownModel(text: "قبو2", value: "0"),
     DropDownModel(text: "قبو1", value: "1"),
     DropDownModel(text: "الطابق الأرضي", value: "2"),
@@ -47,6 +48,7 @@ class DropDownItems{
     DropDownModel(text: "تاجر", value: "تاجر"),
   ];
   List<DropDownModel> cladding = [
+    DropDownModel(text: "اختر", value: ""),
     DropDownModel(text: "غير مفروش", value: "غير مفروش"),
     DropDownModel(text: "نص مفروش", value: "نص مفروش"),
     DropDownModel(text: " مفروش", value: "مفروش"),
@@ -62,6 +64,7 @@ class DropDownItems{
     DropDownModel(text: " الجنوب الغربي", value: "الجنوب الغربي"),
   ];
   List<DropDownModel> condition = [
+    DropDownModel(text: "اختر", value: ""),
     DropDownModel(text: "عادي", value: "عادي"),
     DropDownModel(text: "سوبر", value: "سوبر"),
     DropDownModel(text: " جيد", value: "جيد"),

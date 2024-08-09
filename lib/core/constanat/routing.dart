@@ -26,4 +26,7 @@ class AppRoute {
   static const String coustomizesearsh='/coustomizesearsh';
   static const String spicealsearch='/spicialsearch';
   static const String favorite='/favorite';
+  static const String filteredsearch='/filteredsearch';
+  static const String filteredpropertysearch='/filteredpropertysearch';
+
 }

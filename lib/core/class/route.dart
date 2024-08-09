@@ -8,6 +8,8 @@ import 'package:realestate/view/screen/about_us.dart';
 import 'package:realestate/view/screen/coustomize_search.dart';
 import 'package:realestate/view/screen/detailsscreen.dart';
 import 'package:realestate/view/screen/favorite_screen.dart';
+import 'package:realestate/view/screen/filteres/filtered_property_screen.dart';
+import 'package:realestate/view/screen/filteres/filtered_search_screen.dart';
 import 'package:realestate/view/screen/homepage.dart';
 import 'package:realestate/view/screen/personal_info_screen.dart';
 import 'package:realestate/view/screen/setting.dart';
@@ -29,10 +31,10 @@ import '../../view/screen/userproperty/userpropertydetails.dart';
 
 class Routers {
   List<GetPage<dynamic>>? routers = [
-     GetPage(
-         name:'/',
-         page: () => const OnBordringScreen(),
-         middlewares: [MyMiddleWare()]),
+    // GetPage(
+      //   name:'/',
+        // page: () => const OnBordringScreen(),
+         //middlewares: [MyMiddleWare()]),
     GetPage(name: AppRoute.homepage, page: () => const HomePage()),
     GetPage(name: AppRoute.detailsscreeen, page: () => const DetailsScreen()),
     GetPage(name: AppRoute.signin, page: () => const SignIn()),
@@ -66,7 +68,9 @@ class Routers {
     ,GetPage(name: AppRoute.coustomizesearsh, page: ()=>const CoustomizeSearch()),
     GetPage(name: AppRoute.spicealsearch, page: ()=>const SpicialSearchScreen()),
     GetPage(name: AppRoute.favorite, page: ()=>const FavoriteScreen()),
-    GetPage(name: AppRoute.coustomizesearsh, page: ()=>const CoustomizeSearch())
+    GetPage(name: AppRoute.coustomizesearsh, page: ()=>const CoustomizeSearch()),
+    GetPage(name: '/', page: ()=>const FilteredSearch()),
+    GetPage(name: AppRoute.filteredpropertysearch, page: ()=>const FilteredPropertyScreen())
 
   ];
 }
