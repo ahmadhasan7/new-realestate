@@ -53,14 +53,14 @@ class AddPropertyDetails extends StatelessWidget {
                     val: "للأجار",
                     groupval: controller.stutus,
                     onchanged: (val) {
-                      controller.changestutus(val);
+                      controller.changestutus(val!);
                     }, title: 'اجار',
                   ),
                   CoustomRedioButton(
                     val: "للبيع",
                     groupval: controller.stutus,
                     onchanged: (val) {
-                      controller.changestutus(val);
+                      controller.changestutus(val!);
                     }, title: 'بيع',
                   ),
                 ],
@@ -101,7 +101,7 @@ class AddPropertyDetails extends StatelessWidget {
                     DropDownProperty(
                       items: controller.items.tybeOfProperty,
                       onchanged: (String? val) {
-                        controller.tybeOfPropertyupdate(val!);
+                        controller.updateTybeOfDropDown('tybeOfPropertyselected',val!);
                       },
                       value: controller.tybeOfPropertyselected,
                       nameofitem: 'نوع العقار',
@@ -155,7 +155,7 @@ class AddPropertyDetails extends StatelessWidget {
                     DropDownProperty(
                       items: controller.items.floor,
                       onchanged: (String? val) {
-                        controller.floorupdate(val!);
+                        controller.updateTybeOfDropDown('floorselected',val!);
                       },
                       value: controller.floorselected,
                       nameofitem: 'رقم الطابق',
@@ -167,7 +167,7 @@ class AddPropertyDetails extends StatelessWidget {
                     DropDownProperty(
                       items: controller.items.prpertyFounder,
                       onchanged: (String? val) {
-                        controller.prpertyFounderupdate(val!);
+                        controller.updateTybeOfDropDown('prpertyFounderselected',val!);
                       },
                       value: controller.prpertyFounderselected,
                       nameofitem: 'نوع الملكية',
@@ -240,7 +240,7 @@ class AddPropertyDetails extends StatelessWidget {
                         ? DropDownProperty(
                             items: controller.items.Ownertype,
                             onchanged: (String? val) {
-                              controller.Ownertypeupdate(val!);
+                              controller.updateTybeOfDropDown('Ownertypeselected',val!);
                             },
                             value: controller.Ownertypeselected,
                             nameofitem: 'نوع البائع',
@@ -249,7 +249,7 @@ class AddPropertyDetails extends StatelessWidget {
                         : DropDownProperty(
                             items: controller.items.Rentalperiod,
                             onchanged: (String? val) {
-                              controller.Ownertypeupdate(val!);
+                              controller.updateTybeOfDropDown('Rentalperiodselected',val!);
                             },
                             value: controller.Rentalperiodselected,
                             nameofitem: 'طبيعة الاجار',
@@ -261,7 +261,7 @@ class AddPropertyDetails extends StatelessWidget {
                     DropDownProperty(
                       items: controller.items.cladding,
                       onchanged: (String? val) {
-                        controller.claddingupdate(val!);
+                        controller.updateTybeOfDropDown('claddingselected',val!);
                       },
                       value: controller.claddingselected,
                       nameofitem: 'الفرش',
@@ -273,7 +273,7 @@ class AddPropertyDetails extends StatelessWidget {
                     DropDownProperty(
                       items: controller.items.direction,
                       onchanged: (String? val) {
-                        controller.directionupdate(val!);
+                        controller.updateTybeOfDropDown('directionselected',val!);
                       },
                       value: controller.directionselected,
                       nameofitem: 'الاتجاه',
@@ -285,7 +285,7 @@ class AddPropertyDetails extends StatelessWidget {
                     DropDownProperty(
                       items: controller.items.condition,
                       onchanged: (String? val) {
-                        controller.conditionupdate(val!);
+                        controller.updateTybeOfDropDown('conditionselected',val!);
                       },
                       value: controller.conditionselected,
                       nameofitem: 'الإكساء',
@@ -297,7 +297,7 @@ class AddPropertyDetails extends StatelessWidget {
                     DropDownProperty(
                       items: controller.items.location,
                       onchanged: (String? val) {
-                        controller.locationupdate(val!);
+                        controller.updateTybeOfDropDown('locationselected',val!);
                       },
                       value: controller.locationselected,
                       nameofitem: 'الموقع',
@@ -418,7 +418,7 @@ class AddPropertyDetails extends StatelessWidget {
                         onPressednext: () {
                           controller.goToCoustomerPage(controller.propertydetailsKey);
                         },
-                        onPressedremove: () {})
+                        onPressedremove: () {Get.back();})
                   ],
                 ),
               ),

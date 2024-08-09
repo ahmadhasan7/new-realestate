@@ -51,4 +51,5 @@ class PropertyDetailsData {
   );
   return response.fold((l) => l, (r) => r);
   }
+
 }

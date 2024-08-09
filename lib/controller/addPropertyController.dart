@@ -62,53 +62,43 @@ class AddPropertyController extends GetxController {
   late TextEditingController numofproperty;
   DropDownItems items = DropDownItems();
 
-/////update value od dropdown
-  void tybeOfPropertyupdate(String? val) {
-    tybeOfPropertyselected = val!;
-    update();
-  }
+  void updateTybeOfDropDown(String tybe,String val ) {
+      switch (tybe) {
+        case 'tybeOfPropertyselected':
+          tybeOfPropertyselected = val;
+          break;
+        case 'floorselected':
+          floorselected = val;
+          break;
+        case 'prpertyFounderselected':
+          prpertyFounderselected = val;
+          break;
+        case 'Ownertypeselected':
+          Ownertypeselected = val;
+          break;
+        case 'claddingselected':
+          claddingselected = val;
+          break;
+        case 'directionselected':
+          directionselected = val;
+          break;
+        case 'conditionselected':
+          conditionselected = val;
+          break;
+        case 'locationselected':
+          locationselected = val;
+          break;
+        case 'Rentalperiodselected':
+          Rentalperiodselected = val;
+          break;
+        default:
+          print("00000000");
+      }
+      update();
+    }
 
-  void floorupdate(String? val) {
-    floorselected = val!;
-    update();
-  }
 
-  void prpertyFounderupdate(String? val) {
-    prpertyFounderselected = val!;
-    update();
-  }
-
-  void Ownertypeupdate(String? val) {
-    Ownertypeselected = val!;
-    update();
-  }
-
-  void claddingupdate(String? val) {
-    claddingselected = val!;
-    update();
-  }
-
-  void directionupdate(String? val) {
-    directionselected = val!;
-    update();
-  }
-
-  void conditionupdate(String? val) {
-    conditionselected = val!;
-    update();
-  }
-
-  void Rentalperiodupdate(String? val) {
-    Rentalperiodselected = val!;
-    update();
-  }
-
-  void locationupdate(String? val) {
-    locationselected = val!;
-    update();
-  }
-
-  void changestutus(String? val) {
+    void changestutus(String? val) {
     stutus = val!;
     if (val == "للبيع") {
       changeitems = true;
@@ -188,11 +178,11 @@ class AddPropertyController extends GetxController {
         },
         onConfirm: () {
           Get.back();
-          uplodedetais();
+          uplodeDetails();
         });
   }
 
-  uplodephotos(String id) async {
+  uplodePhotos(String id) async {
     print(statusRequest);
     var response = await propertyImages.AddPropertyImages(
         myServices.pref!.getString('token')!, selectedImages, id);
@@ -211,7 +201,7 @@ class AddPropertyController extends GetxController {
     }
   }
 
-  uplodedetais() async {
+  uplodeDetails() async {
     statusRequest = StatusRequest.loading;
     update();
     var response = await propertyData.AddPropertyDetialsData(
@@ -247,7 +237,7 @@ class AddPropertyController extends GetxController {
     print(statusRequest);
     if (statusRequest == StatusRequest.seccess) {
       propertyid = response['id'];
-      uplodephotos(propertyid!);
+      uplodePhotos(propertyid!);
     }
 
   }
