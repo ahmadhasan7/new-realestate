@@ -16,15 +16,17 @@ class SignIn extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(SignInContollerImp());
     return Scaffold(
-
         backgroundColor: Colors.grey.shade100,
         body: GetBuilder<SignInContollerImp>(
           builder: (contoller) {
             return CoustomHandlingData(
                 statusRequest: contoller.statusRequest,
                 widget: ListView(
-                  padding:const EdgeInsets.all(14),
+                  padding: const EdgeInsets.all(14),
                   children: [
+                    SizedBox(
+                      height: 50.h,
+                    ),
                     Image.asset(
                       "Assets/images/CoustomLogo.PNG",
                       color: AppColors.greencolor,
@@ -74,7 +76,6 @@ class SignIn extends StatelessWidget {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.01,
                         ),
-
                         CustomTextFormAuth(
                           hinttext: 'كلمة السر',
                           mycontroller: contoller.password,
@@ -82,7 +83,10 @@ class SignIn extends StatelessWidget {
                             validInput("password", 10, 10, val!);
                           },
                           isNumber: false,
+                            obscureText:contoller.showPass,
                           icons: Icon(Icons.password),
+                          onTapIcon: (){contoller.showPassword();},
+                          iconData: contoller.showPass?Icons.visibility:Icons.visibility_off,
                         ),
                         const SizedBox(
                           height: 10,
@@ -115,7 +119,7 @@ class SignIn extends StatelessWidget {
                                 child: const Text(
                                   "اضغط هنا",
                                   style:
-                                  TextStyle(color: AppColors.orangecolor),
+                                      TextStyle(color: AppColors.orangecolor),
                                 )),
                             const Text(
                               "أليس لديك حساب؟",
@@ -130,68 +134,72 @@ class SignIn extends StatelessWidget {
                         onpress: () {
                           contoller.signin();
                         }),
+                    TextButton(
+                        onPressed: () {contoller.continueAsGuest();},
+                        child:const  Text(
+                          "المتابعة كزائر",
+                          style: TextStyle(color: AppColors.greencolor),
+                        )),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.1,
                     ),
-
-                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            "أو يمكنك تسجل الدخول من خلال",
-                            style: TextStyle(
-                                fontSize: 15,
-                                color: AppColors.greencolor,
-                                fontFamily: "Tejwa;"),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  contoller.signinwithfacebook();
-                                },
-                                child: Image.asset(
-                                  "Assets/images/Facebook_Logo_(2019).png",
-                                  width: 25.sp,
-                                  height: 25.sp,
-                                ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "أو يمكنك تسجل الدخول من خلال",
+                          style: TextStyle(
+                              fontSize: 15,
+                              color: AppColors.greencolor,
+                              fontFamily: "Tejwa;"),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                contoller.signinwithfacebook();
+                              },
+                              child: Image.asset(
+                                "Assets/images/Facebook_Logo_(2019).png",
+                                width: 25.sp,
+                                height: 25.sp,
                               ),
-                              const SizedBox(
-                                width: 15,
+                            ),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                contoller.signinwithlinkedin();
+                              },
+                              child: Image.asset(
+                                "Assets/images/LinkedIn_icon.svg.png",
+                                width: 25.sp,
+                                height: 25.sp,
                               ),
-                              InkWell(
-                                onTap: () {
-                                  contoller.signinwithlinkedin();
-                                },
-                                child: Image.asset(
-                                  "Assets/images/LinkedIn_icon.svg.png",
-                                  width: 25.sp,
-                                  height: 25.sp,
-                                ),
+                            ),
+                            SizedBox(
+                              width: 15.sp,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                contoller.signinwithinsta();
+                              },
+                              child: Image.asset(
+                                "Assets/images/new-Instagram-logo-png-full-colour-glyph.png",
+                                width: 25.sp,
+                                height: 25.sp,
                               ),
-                              SizedBox(
-                                width: 15.sp,
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  contoller.signinwithinsta();
-                                },
-                                child: Image.asset(
-                                  "Assets/images/new-Instagram-logo-png-full-colour-glyph.png",
-                                  width: 25.sp,
-                                  height: 25.sp,
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ],
                 ));
           },

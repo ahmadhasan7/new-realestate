@@ -30,7 +30,7 @@ class GetOneProperty {
   String? furnishing;
   String? direction;
   int? totalRooms;
-  Null? rentType;
+  String? rentType;
   String? coverPhoto;
   bool? publishedStatus;
   int? views;

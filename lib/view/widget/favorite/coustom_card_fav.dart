@@ -46,7 +46,7 @@ class CoustomFavoriteCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15.sp)),
               ),
               Positioned(
-                left: 110.sp,
+                left: 270.w,
                 top: 10.sp,
                 child:Container(
                   width: 50.sp,

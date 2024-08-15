@@ -21,7 +21,7 @@ class DropDownProperty extends StatelessWidget {
           decoration: BoxDecoration(
               color: AppColors.greencolor,
               borderRadius: BorderRadius.circular(15.sp)),
-          width: 125.sp,
+          width: 170.sp,
           child: DropdownButton(
             items: items.map((e) {
               return DropdownMenuItem(

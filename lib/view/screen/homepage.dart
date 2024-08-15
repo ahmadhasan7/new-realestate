@@ -1,12 +1,9 @@
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:curved_labeled_navigation_bar/curved_navigation_bar_item.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../controller/homepagecontroller.dart';
 import '../../core/constanat/colors.dart';
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -33,6 +30,10 @@ class HomePage extends StatelessWidget {
               label: 'عقاراتي',
             ),
             CurvedNavigationBarItem(
+              child: Icon(Icons.search),
+              label: 'فلترة العقارات',
+            ),
+            CurvedNavigationBarItem(
               child: Icon(Icons.control_point),
               label: 'إضافة عقار',
             ),
@@ -48,11 +49,6 @@ class HomePage extends StatelessWidget {
           letIndexChange: (index) => true,
         ),
         body: homePageControllerImp.pages[homePageControllerImp.page],
-
-
-
-
-
       );
     } );
   }

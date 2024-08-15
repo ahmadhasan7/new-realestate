@@ -18,7 +18,7 @@ class PropertyDetailsController extends GetxController {
     statusRequest = StatusRequest.loading;
     update();
     var response = await propertyData.getPropertyData(
-        slug!, myServices.pref!.getString('token')!);
+        slug!,);
     statusRequest = handlingData(response);
     update();
     print(statusRequest);
@@ -35,8 +35,7 @@ class PropertyDetailsController extends GetxController {
           imageurl = [];
         }
       }
-      print(data);
-      print(imageurl);
+
       update();
     } else {
       data = null;

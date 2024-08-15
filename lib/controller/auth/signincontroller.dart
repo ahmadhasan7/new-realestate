@@ -1,4 +1,3 @@
-
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -10,30 +9,39 @@ import '../../core/services/services.dart';
 import '../../data/remote/auth/signin.dart';
 import '../personal_info_controller.dart';
 
-abstract class SignIncontroller extends GetxController{
+abstract class SignIncontroller extends GetxController {
   signin();
+
   forgetpassword();
+
   signinwithlinkedin();
+
   signinwithfacebook();
+
   signinwithinsta();
+
   gotoforgetpassword();
+
   gotosignup();
 }
-class SignInContollerImp extends SignIncontroller{
 
+class SignInContollerImp extends SignIncontroller {
   late TextEditingController email;
   late TextEditingController password;
-  SignInData signindata=SignInData(Get.find());
-  List<Map<String,dynamic>> data=[];
-  MyServices services=Get.find();
+  bool showPass = true;
+  SignInData signindata = SignInData(Get.find());
+  List<Map<String, dynamic>> data = [];
+  MyServices services = Get.find();
   String? userid;
-  StatusRequest statusRequest=StatusRequest.none;
+  StatusRequest statusRequest = StatusRequest.none;
+
   @override
   void onInit() {
-    email=TextEditingController();
-    password=TextEditingController();
+    email = TextEditingController();
+    password = TextEditingController();
     super.onInit();
   }
+
   @override
   void dispose() {
     email.dispose();
@@ -41,24 +49,33 @@ class SignInContollerImp extends SignIncontroller{
     super.dispose();
   }
 
+  showPassword() {
+    showPass = !showPass;
+    update();
+  }
+
+  continueAsGuest() {
+    Get.offAllNamed(AppRoute.homepage);
+  }
+
   @override
-  signin() async{
+  signin() async {
     statusRequest = StatusRequest.loading;
-    update() ;
-    var response = await signindata.PostSignUpdata(email.text,password.text);
+    update();
+    var response = await signindata.PostSignUpdata(email.text, password.text);
     print("=============================== Controller $response ");
     statusRequest = handlingData(response);
-    update() ;
+    update();
     print(statusRequest);
     if (statusRequest == StatusRequest.seccess) {
       Get.toNamed(AppRoute.homepage);
       myServices.pref.setString('token', response['token']);
-      myServices.pref.setString("login","1");
+      myServices.pref.setString("login", "1");
       FirebaseMessaging.instance.subscribeToTopic("user");
-    }
-    else{
+    } else {
       print(response);
-      Get.defaultDialog(title: "تحذير" , middleText: "البريد الالكتروني او كلمة السر خاطئ") ;
+      Get.defaultDialog(
+          title: "تحذير", middleText: "البريد الالكتروني او كلمة السر خاطئ");
       print(statusRequest);
       statusRequest = StatusRequest.failure;
       update();
@@ -67,21 +84,18 @@ class SignInContollerImp extends SignIncontroller{
   }
 
   @override
-  signinwithfacebook() {
-  }
+  signinwithfacebook() {}
 
   @override
-  signinwithinsta() {
-  }
+  signinwithinsta() {}
 
   @override
-  signinwithlinkedin() {
-  }
+  signinwithlinkedin() {}
+
   @override
   gotoforgetpassword() {
-
-    Get.toNamed(AppRoute.forgetpassword);  }
-
+    Get.toNamed(AppRoute.forgetpassword);
+  }
 
   @override
   forgetpassword() {

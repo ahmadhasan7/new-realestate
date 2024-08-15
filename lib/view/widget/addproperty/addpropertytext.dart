@@ -34,7 +34,7 @@ class AddPropertyText extends StatelessWidget {
           mycontroller: controller,
           valid: valid,
           isNumber: isnum,
-          width: 120.sp,
+          width: 170.sp,
         ),
         Container(
           width: 125.sp,

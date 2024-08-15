@@ -115,7 +115,7 @@ class AddPropertyDetails extends StatelessWidget {
                       isreq: true,
                       controller: controller.title,
                       isnum: false, valid: (String? val ) {
-                        return validInput(val!, 3, 10, "type");
+                        return validInput(val!, 3, 50, "type");
                     },
                     ),
                     SizedBox(
@@ -149,7 +149,7 @@ class AddPropertyDetails extends StatelessWidget {
                       isreq: true,
                       controller: controller.size,
                       valid: (String? val ) {
-                        return validInput(val!, 3, 6, "type");
+                        return validInput(val!, 2, 9,"type");
                       },
                     ),
                     DropDownProperty(

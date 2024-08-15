@@ -15,7 +15,7 @@ class FilteredPropertyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     FilteredPropertyController controller = Get.put(FilteredPropertyController());
     return Scaffold(
-      backgroundColor: const Color(0xF3F3F3E7),
+      //backgroundColor: const Color(0xF3F3F3E7),
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: const Text(

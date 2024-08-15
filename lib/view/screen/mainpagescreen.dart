@@ -33,7 +33,7 @@ class MainPageScreen extends StatelessWidget {
           actions: [
             IconButton(
                 onPressed: () {
-                  Get.toNamed(AppRoute.favorite);
+                  controller.goToFavScreen();
                 },
                 icon: const Icon(
                   Icons.favorite_border,
@@ -87,7 +87,7 @@ class MainPageScreen extends StatelessWidget {
                             var data = CategoryData().data[index];
                             return InkWell(
                               onTap: () {
-                                controller.gotodetailsscreen(data.tybe);
+                                controller.gotodetailsscreen(data.tybe,controller.category,index);
                               },
                               child: CoustomCategory(
                                 imageurl: data.imageurl,

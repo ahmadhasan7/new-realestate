@@ -31,10 +31,10 @@ import '../../view/screen/userproperty/userpropertydetails.dart';
 
 class Routers {
   List<GetPage<dynamic>>? routers = [
-    // GetPage(
-      //   name:'/',
-        // page: () => const OnBordringScreen(),
-         //middlewares: [MyMiddleWare()]),
+     GetPage(
+         name:'/',
+         page: () => const OnBordringScreen(),
+         middlewares: [MyMiddleWare()]),
     GetPage(name: AppRoute.homepage, page: () => const HomePage()),
     GetPage(name: AppRoute.detailsscreeen, page: () => const DetailsScreen()),
     GetPage(name: AppRoute.signin, page: () => const SignIn()),
@@ -55,7 +55,7 @@ class Routers {
     GetPage(
         name: AppRoute.AddPropertyDetails,
         page: () => const AddPropertyDetails()),
-    GetPage(name: AppRoute.setting, page: () => const SettingPage()),
+   // GetPage(name: AppRoute.setting, page: () => const SettingPage()),
     GetPage(
         name: AppRoute.personalinfo, page: () => const PersonalInfoScreen()),
     GetPage(name: AppRoute.aboutus, page: () => AboutUsScreen()),
@@ -69,7 +69,7 @@ class Routers {
     GetPage(name: AppRoute.spicealsearch, page: ()=>const SpicialSearchScreen()),
     GetPage(name: AppRoute.favorite, page: ()=>const FavoriteScreen()),
     GetPage(name: AppRoute.coustomizesearsh, page: ()=>const CoustomizeSearch()),
-    GetPage(name: '/', page: ()=>const FilteredSearch()),
+    GetPage(name: AppRoute.filteredsearch, page: ()=>const FilteredSearch()),
     GetPage(name: AppRoute.filteredpropertysearch, page: ()=>const FilteredPropertyScreen())
 
   ];

@@ -8,7 +8,7 @@ class CoustomPanner extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 10.sp,horizontal: 10.sp),
               margin: EdgeInsets.symmetric(vertical: 10.sp),
               width:double.infinity,
-              height: 40.sp,
+              height: 50.sp,
               decoration: BoxDecoration( color: Color(0xff00d4b6)),
               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

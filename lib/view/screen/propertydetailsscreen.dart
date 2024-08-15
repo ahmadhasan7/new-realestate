@@ -60,7 +60,7 @@ class PropertyDetailsScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         controller.data == null
-                            ? Center(child: Text("No data available"))
+                            ? Center(child: Text("لا يوجد بيانات لعرضها"))
                             : ImageViewer(
                           imageUrls: controller.imageurl,
                         ),
@@ -86,7 +86,7 @@ class PropertyDetailsScreen extends StatelessWidget {
                       width: 50.sp,
                       height: 20.sp,
                       child: Text(
-                        controller.data!.propertyStatus=='For Rent' ?"للإجار":"للبيع",
+                        controller.data!.propertyStatus!,
                         textAlign: TextAlign.center,
                         style: const TextStyle(color: Colors.white),
                       ),
@@ -124,6 +124,13 @@ class PropertyDetailsScreen extends StatelessWidget {
                             imageurl: "Assets/images/88.png",
                             title: "المساحة",
                             ammount: "${controller.data!.plotArea}"),
+                       controller.data!.propertyStatus=='للأجار'? Divider(
+                          color: Colors.grey.shade100,
+                        ):Container(),
+                        controller.data!.propertyStatus=='للأجار'?CoustomDataDetails(
+                            imageurl: "Assets/images/88.png",
+                            title: "نوع الأجار",
+                            ammount: "${controller.data!.rentType}"):Container(),
                         Divider(
                           color: Colors.grey.shade100,
                         ),
@@ -243,7 +250,7 @@ class PropertyDetailsScreen extends StatelessWidget {
                      CoustomDataDetails(
                         imageurl: "Assets/images/8888888.png",
                         title: "تاريخ النشر",
-                        ammount:Jiffy.parse(controller.data!.createdAt!).format(pattern: 'MMMM do yyyy, h:mm:ss a')
+                        ammount:Jiffy.parse(controller.data!.createdAt!).format(pattern: 'MMMM do yyyy, ')
                       ),
                   ],
                 )

@@ -38,30 +38,28 @@ class FavoriteScreen extends StatelessWidget {
           statusRequest: controller.favoriteController.statusRequest.value,
           widget: controller.favoriteController.data.isEmpty
               ? const Center(child: Text("المفضلة فارغة"))
-              : GridView.builder(
+              : ListView.builder(
             padding: const EdgeInsets.all(10),
             itemCount: controller.favoriteController.data.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 0.53,
-              mainAxisSpacing: 0.5,
-              crossAxisSpacing: 11,
-            ),
             itemBuilder: (context, index) {
               PropertyModel data = controller.favoriteController.data[index];
               return InkWell(
                 onTap: () {
                   controller.goToPropertyDetails(data.slug!);
                 },
-                child: CoustomFavoriteCard(
-                  cover: data.coverPhoto!,
-                  title: data.title ?? "",
-                  street: data.location?.street ?? "",
-                  location: data.location?.city ?? "",
-                  price: " ${data.price}",
-                  onDeletePressed: () {
-                    controller.deletePropertyFromFav(index, data.id!);
-                  },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CoustomFavoriteCard(
+                    cover: data.coverPhoto!,
+                    title: data.title ?? "",
+                    street: data.location?.street ?? "",
+                    location: data.location?.city ?? "",
+                    price: " ${data.price}",
+                    onDeletePressed: () {
+                      controller.deletePropertyFromFav(index, data.id!);
+                    },
+
+                  ),
                 ),
               );
             },
